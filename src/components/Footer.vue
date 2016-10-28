@@ -1,0 +1,32 @@
+<template>
+  <footer>
+    <div class="footer-main">
+      Copyright © 2016 Mcorce.com . All rights reserved
+    </div>
+  </footer>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}
+</script>
+
+<style scoped>
+footer {
+  margin-top: 50px;
+  border-top: 1px solid #F5F5F5;
+}
+  .footer-main {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: #B9B9B9;
+    font-size: 1.3rem;
+    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+  }
+</style>
