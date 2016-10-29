@@ -3,6 +3,9 @@
     <div class="home-bg">
       <div class="slant-left"></div>
       <div class="slant-right"></div>
+      <div class="info">
+        
+      </div>
     </div>
   </div>
 </template>
@@ -50,5 +53,15 @@ export default {
       left: 48%;
       transform: rotate(-6deg);
       background: #FFF;
+    }
+    .info {
+      position: relative;
+      max-width: 800px;
+      height: 200px;
+      background: #ff6600;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
     }
 </style>

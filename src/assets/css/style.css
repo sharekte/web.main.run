@@ -238,7 +238,7 @@
     }
 
 /* Loader */
-    /*@-moz-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @-moz-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
     @-webkit-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
     @-o-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
     @-ms-keyframes spinner-show { 0% { opacity: 0; } 100% { opacity: 1; } }
@@ -335,12 +335,11 @@
         animation: none !important;
         opacity: 1;
         z-index: 10000;
-    }*/
+    }
 @media (-webkit-min-device-pixel-ratio: 2) {
-  html body:before {
-    line-height: 2.025rem;
-
-}
+    html body:before {
+        line-height: 2.025rem;
+    }
 }
 
     

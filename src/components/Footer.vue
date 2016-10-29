@@ -27,6 +27,7 @@ footer {
     text-align: center;
     color: #B9B9B9;
     font-size: 1.3rem;
-    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+    background: #33363B;
+    border-top: 4px solid #494c54;
   }
 </style>
