@@ -21,12 +21,13 @@ export default {
 </script>
 <style scoped>
 .home {
-  height: 800px;
+  -height: 800px;
   -background: #ff6600;
   position: relative;
   overflow: hidden;
 }
   .home-bg {  
+    position: relative;
     width: 100%;
     height: 550px;
     background-image: url(../assets/images/home-bg.jpg);
@@ -40,7 +41,7 @@ export default {
       width: 101%;
       height: 200px;
       position: absolute;
-      bottom: 22%;
+      bottom: -22%;
       right: 48%;
       transform: rotate(6deg);
       background: #FFF;
@@ -49,7 +50,7 @@ export default {
       width: 101%;
       height: 200px;
       position: absolute;
-      bottom: 22%;
+      bottom: -22%;
       left: 48%;
       transform: rotate(-6deg);
       background: #FFF;

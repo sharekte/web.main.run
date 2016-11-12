@@ -24,7 +24,6 @@
         position: relative;
     }
     
-
     html.is-loading body *, html.is-loading body *:before, html.is-loading body *:after {
         -moz-animation: none !important;
         -webkit-animation: none !important;
@@ -67,7 +66,7 @@
     body, input, select, textarea, button {
         font-family: Helvetica, Tahoma, Arial, STXiHei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", "FontAwesome", sans-serif;
         font-size: 1.6rem;
-        font-weight: 200;
+        font-weight: 300;
         line-height: 1.2;
         color: #333333;
     }
