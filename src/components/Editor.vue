@@ -13,6 +13,8 @@
     </textarea>
     </div>
 
+    <button @click="submit">提交</button>
+
 
 
   </div>
@@ -33,6 +35,7 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       edit: {},
+      editor: {}
     }
   },
   mounted: function () {
@@ -40,17 +43,19 @@ export default {
 
     this.edit = document.querySelector("#ta")
 
-    this.setCaretPosition(this.edit, 0)
+    //this.setCaretPosition(this.edit, 0)
 
-    console.log(this.edit)
+    //console.log(this.edit)
 
-    console.log(this.edit.parentElement.children.length)
+    //console.log(this.edit.parentElement.children.length)
 
-    woofmark(this.edit, {
+    this.editor = woofmark(this.edit, {
       parseMarkdown: megamark,
-      parseHTML: domador,
-      //fencing: true,
+      parseHTML: this.parseHTML,
+      fencing: true,
     });
+
+    console.log(this.editor.value())
 
 
   },
@@ -60,15 +65,20 @@ export default {
 
       //var p1 = document.querySelector("#ta")
 
-      console.log(this.getCursortPosition(this.edit))
+      //console.log(this.getCursortPosition(this.edit))
     }
   },
   methods: {
+    submit: function () {
+      console.log(this.editor.value())
+      console.log(this.editor.parseMarkdown())
+    },
     /**
      * 获取当前光标位置
      * @param ctrl
      * @returns {number}
      */
+    /*
     getCursortPosition: function (element) {
       var CaretPos = 0;
       if (document.selection) {//支持IE
@@ -81,12 +91,13 @@ export default {
       }
       return (CaretPos);
     },
-
+  */
     /**
      * 设置光标位置
      * @param ctrl
      * @param pos
      */
+    /*
     setCaretPosition: function (element, pos){
       if(element.setSelectionRange) {
         element.focus();
@@ -111,12 +122,14 @@ export default {
 
       this.pos = this.getCursortPosition(this.edit)
     },
-
-    /*
+  */
     parseHTML: function (value, options) {
+      if (options === void 0) {
+        var options = {markers: []}
+      }
       return domador(value, {
         fencing: true,
-        fencinglanguage: fences,
+        fencinglanguage: this.fences,
         markers: options.markers
       });
     },
@@ -142,7 +155,6 @@ export default {
     imageValidator: function (file) {
       return rimage.test(file.type);
     }
-    */
 
   }
 }

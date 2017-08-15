@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+//import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
-import Home from 'components/Home'
-import Main from 'components/Main'
-import Demo from 'components/Demo'
-import Editor from 'components/Editor'
+import Home from '@/components/Home'
+import Main from '@/components/Main'
+import Demo from '@/components/Demo'
+import Editor from '@/components/Editor'
 
 export default new Router({
   mode: 'history',

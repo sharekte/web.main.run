@@ -6,9 +6,9 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-import 'assets/css/style.css'
-import 'assets/css/grid.css'
-import 'assets/css/app.css'
+import '@/assets/css/style.css'
+import '@/assets/css/grid.css'
+import '@/assets/css/app.css'
 
 /* eslint-disable no-new */
 new Vue({
