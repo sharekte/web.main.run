@@ -8,6 +8,7 @@ import Home from '@/components/Home'
 import Main from '@/components/Main'
 import Demo from '@/components/Demo'
 import Editor from '@/components/Editor'
+import cc from '@/components/cc'
 
 export default new Router({
   mode: 'history',
@@ -24,6 +25,9 @@ export default new Router({
       }, {
         path: '/editor',
         component: Editor
+      }, {
+        path: '/cc',
+        component: cc
       }]
     }
   ]

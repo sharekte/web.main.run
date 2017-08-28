@@ -7,40 +7,30 @@
       哈哈
       </div>
     </div>
-    <button @click="haha">haha</button>
+
+    <div id="editor">
+      <mavon-editor style="height: 100%"></mavon-editor>
+    </div>
   </div>
 </template>
 
 <script>
-import {User} from '../resource'
+
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 export default {
+  components: {
+    mavonEditor
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  },
-  mounted: () => {
-
-  },
-  methods: {
-    haha: () => {
-      console.log("haha")
-
-      console.log(User)
-
-      // user.user.get({}).then(response => {
-      //     console.log(response)
-      // });
-      User.save({action: 'login'}, {Username: 'danc', Password: 'dangcheng'}).then(response => {
-        console.log(response)
-      })
-      
-    }
   }
 }
 </script>
-<style scoped>
+<style>
 .home {
   height: 1600px;
   -background: #ff6600;
@@ -88,4 +78,16 @@ export default {
       font-size: 10rem;
       color: #ffffff;
     }
+
+
+  #editor {
+    margin: auto;
+    width: 80%;
+    height: 580px;
+  }
+
+  #editor textarea {
+    background: #FFF;
+    box-shadow: none;
+  }
 </style>
