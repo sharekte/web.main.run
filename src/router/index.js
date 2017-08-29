@@ -9,6 +9,7 @@ import Main from '@/components/Main'
 import Demo from '@/components/Demo'
 import Editor from '@/components/Editor'
 import cc from '@/components/cc'
+import Login from '@/components/Login'
 
 export default new Router({
   mode: 'history',
@@ -18,6 +19,7 @@ export default new Router({
       component: Main,
       children: [{
       	path: '',
+        name: 'home',
       	component: Home
       }, {
       	path: '/demo',
@@ -29,6 +31,11 @@ export default new Router({
         path: '/cc',
         component: cc
       }]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 })

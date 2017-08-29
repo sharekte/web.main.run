@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
+import LocalStore from 'store'
 
 import store from './store'
 
@@ -18,12 +19,21 @@ Vue.use(vueResource)
 //console.log(Vue.resource('http://127.0.0.1:8000/user'))
 
 Vue.http.interceptors.push(function(request, next) {
-    request.headers.set('Token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1OTljMGYzMjAwMDAwMDkzNjBiODAxNDciLCJEYXRlIjoxNTAzODk0OTcwfQ.h9wYvVgexD7BLKos-wjZRwr0Fstst2STDbekfag2rcQ');
-    next()
+    //LocalStore.set('Token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1OTljMGYzMjAwMDAwMDkzNjBiODAxNDciLCJEYXRlIjoxNTAzODk0OTcwfQ.h9wYvVgexD7BLKos-wjZRwr0Fstst2STDbekfag2rcQ')
+    
+    if (LocalStore.get('Token')) {
+        request.headers.set('Token', LocalStore.get('Token'));
+    }
+
+    next(function(response) {
+        if (response.status == 401) {
+            router.push('login')
+        }
+    })
 })
 
 /* eslint-disable no-new */
-new Vue({
+var vue = new Vue({
   el: '#app',
   router,
   store,

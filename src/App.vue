@@ -7,21 +7,7 @@
 
 <script>
 export default {
-  name: 'app',
-  created: function () {
-    
-  },
-  mounted: function () {
-
-  },
-  watch: {
-
-  },
-  computed: {
-    function1: function () {
-
-    }
-  }
+  
 }
 </script>
 

@@ -4,15 +4,14 @@
       <div class="slant-left"></div>
       <div class="slant-right"></div>
       <div class="info">
-      哈哈
+      
       </div>
     </div>
-    <button @click="haha">haha</button>
   </div>
 </template>
 
 <script>
-import {User} from '../resource'
+import { Article } from '../resource'
 
 export default {
   data () {
@@ -20,21 +19,23 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  mounted: () => {
+  mounted () {
 
   },
   methods: {
-    haha: () => {
+    haha () {
       console.log("haha")
+      console.log(this.$store)
+      console.log(this.$route)
 
-      console.log(User)
+      //console.log(User)
 
-      // user.user.get({}).then(response => {
+      //User.get({}).then(response => {
       //     console.log(response)
-      // });
-      User.save({action: 'login'}, {Username: 'danc', Password: 'dangcheng'}).then(response => {
-        console.log(response)
-      })
+      //});
+      //User.save({action: 'login'}, {Username: 'danc', Password: 'dangcheng'}).then(response => {
+        //console.log(response)
+      //})
       
     }
   }
