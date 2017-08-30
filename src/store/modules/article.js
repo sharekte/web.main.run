@@ -3,7 +3,7 @@ import { Article } from '@/resource'
 
 const state = {
     articles: [],
-    page: 0,
+    page: 1,
     count: 0,
     hasMore: true
 }
@@ -19,12 +19,11 @@ const getters = {
 
 const actions = {
     get_article ({commit, state}) {
-        commit('ADD_PAGE')
-
         Article.get({page: state.page, per_page: 2}).then(response => {
             if (response.body.Success) {
                 commit('SET_ARTICLES', response.body.Data.Articles)
                 commit('SET_COUNT', response.body.Data.Count)
+                commit('ADD_PAGE')
             }
         })
 
