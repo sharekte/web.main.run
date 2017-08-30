@@ -2,10 +2,10 @@
   <div class="login">
     <form method="post" action="#">
       <div class="field">
-        <input type="text" name="username" id="demo-name" value="" placeholder="Name" v-model="username"/>
+        <input type="text" name="username" id="username" value="" placeholder="Name" v-model="username"/>
       </div>
       <div class="field">
-        <input type="password" name="password" id="demo-email" value="" placeholder="Password" v-model="password"/>
+        <input type="password" name="password" id="password" value="" placeholder="Password" v-model="password"/>
       </div>
       <!-- <div>{{token}}</div> -->
       <div class="field">

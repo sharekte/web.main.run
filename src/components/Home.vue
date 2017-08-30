@@ -4,9 +4,14 @@
       <div class="slant-left"></div>
       <div class="slant-right"></div>
       <div class="info">
-      
+        Hello
       </div>
     </div>
+    <section class="main2">
+      <div v-for="item in articles">
+        <h3>{{item.Title}}</h3>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -16,17 +21,21 @@ import { Article } from '../resource'
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      articles: [
+        {Title: "文章1"},
+        {Title: "文章2"},
+        {Title: "文章3"}
+      ]
     }
   },
   mounted () {
-
+    //console.log(this.articles)
   },
   methods: {
     haha () {
-      console.log("haha")
-      console.log(this.$store)
-      console.log(this.$route)
+      //console.log("haha")
+      //console.log(this.$store)
+      //console.log(this.$route)
 
       //console.log(User)
 
@@ -43,7 +52,7 @@ export default {
 </script>
 <style scoped>
 .home {
-  height: 1600px;
+  -height: 1600px;
   -background: #ff6600;
   position: relative;
   overflow: hidden;

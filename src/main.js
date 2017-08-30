@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import vueResource from 'vue-resource'
 import LocalStore from 'store'
+//import Toasted from 'vue-toasted'
 
 import store from './store'
 
@@ -15,6 +16,15 @@ import '@/assets/css/grid.css'
 import '@/assets/css/app.css'
 
 Vue.use(vueResource)
+/*
+Vue.use(Toasted, {
+    position: 'top-center',
+    duration: 5000
+})
+*/
+
+//Vue.toasted.show('hola billo');
+//Vue.toasted.show('hola billo');
 
 //console.log(Vue.resource('http://127.0.0.1:8000/user'))
 
