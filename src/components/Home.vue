@@ -7,10 +7,13 @@
         Hello
       </div>
     </div>
-    <section class="main2">
-      <div v-for="item in articles">
-        <h3>{{item.Title}}</h3>
+    <section class="main">
+      <div class="article" v-for="article in articles">
+        <h3>{{article.Title}}</h3>
+        <a href="">查看</a>
       </div>
+      <button class="fit special" @click="fecthDate" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</button>
+      <button class="fit" v-else>没有更多了</button>
     </section>
   </div>
 </template>
@@ -21,36 +24,31 @@ import { Article } from '../resource'
 export default {
   data () {
     return {
-      articles: [
-        {Title: "文章1"},
-        {Title: "文章2"},
-        {Title: "文章3"}
-      ]
+
     }
+  },
+  computed: {
+    articles() {
+      return this.$store.getters.getArticles
+    },
+    hasMore() {
+      return this.$store.getters.hasMore
+    }
+  },
+  created() {
+    this.fecthDate()
   },
   mounted () {
     //console.log(this.articles)
   },
   methods: {
-    haha () {
-      //console.log("haha")
-      //console.log(this.$store)
-      //console.log(this.$route)
-
-      //console.log(User)
-
-      //User.get({}).then(response => {
-      //     console.log(response)
-      //});
-      //User.save({action: 'login'}, {Username: 'danc', Password: 'dangcheng'}).then(response => {
-        //console.log(response)
-      //})
-      
+    fecthDate() {
+      this.$store.dispatch('get_article')
     }
   }
 }
 </script>
-<style scoped>
+<style lang="stylus" scoped>
 .home {
   -height: 1600px;
   -background: #ff6600;
@@ -98,4 +96,16 @@ export default {
       font-size: 10rem;
       color: #ffffff;
     }
+
+.main {
+  margin: 0 auto;
+  width: 700px;
+  
+  .article {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    box-shadow: inset 0 0 0 1px #dddddd;
+  }
+}
+
 </style>
