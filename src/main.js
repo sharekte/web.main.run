@@ -14,7 +14,6 @@ Vue.config.productionTip = false
 import '@/assets/stylus/style.styl'
 
 import '@/assets/css/style.css'
-//import '@/assets/css/grid.css'
 import '@/assets/css/app.css'
 
 Vue.use(vueResource)

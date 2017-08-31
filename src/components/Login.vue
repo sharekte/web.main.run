@@ -7,7 +7,6 @@
       <div class="field">
         <input type="password" name="password" id="password" value="" placeholder="Password" v-model="password"/>
       </div>
-      <!-- <div>{{token}}</div> -->
       <div class="field">
         <div class="button fit" @click="submit">登录</div>
       </div>
@@ -35,16 +34,8 @@ export default {
       }
     }
   },
-  mounted () {
-    //console.log(this.$store)
-    //console.log(this.$store.getters.getToken)
-    //console.log(this.$route.push('home'))
-    //console.log(this.$router)
-  },
   methods: {
     submit () {
-      //console.log(this.$store)
-      //console.log(this.$store.commit('SAVE_USER', {Username: this.username, Password: this.password}))
       this.$store.dispatch('login', {Username: this.username, Password: this.password})
     }
   }
