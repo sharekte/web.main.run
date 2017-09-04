@@ -4,48 +4,16 @@
       <div class="slant-left"></div>
       <div class="slant-right"></div>
       <div class="info">
-        Hello
+        404
       </div>
     </div>
-    <section class="main">
-      <div class="article" v-for="article in articles">
-        <h3>{{article.Title}}</h3>
-        <a href="">查看</a>
-      </div>
-      <button class="fit special" @click="fecthDate" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</button>
-      <button class="fit" v-else>没有更多了</button>
-    </section>
   </div>
 </template>
 
 <script>
-import { Article } from '../resource'
 
 export default {
-  data () {
-    return {
-
-    }
-  },
-  computed: {
-    articles() {
-      return this.$store.getters.getArticles
-    },
-    hasMore() {
-      return this.$store.getters.hasMore
-    }
-  },
-  created() {
-    this.fecthDate()
-  },
-  mounted () {
-    //console.log(this.articles)
-  },
-  methods: {
-    fecthDate() {
-      this.$store.dispatch('get_articles')
-    }
-  }
+  
 }
 </script>
 <style lang="stylus" scoped>

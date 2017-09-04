@@ -9,3 +9,5 @@ export const SET_ARTICLES = 'SET_ARTICLES'
 export const ADD_PAGE = 'ADD_PAGE'
 export const SET_COUNT = 'SET_COUNT'
 export const HAS_MORE = 'HAS_MORE'
+
+export const SET_ARTICLE_RELEASE = 'SET_ARTICLE_RELEASE'
