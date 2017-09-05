@@ -25,7 +25,7 @@
 import woofmark from 'woofmark'
 import megamark from 'megamark'
 import domador from 'domador'
-import hyperdown from 'hyperdown'
+//import hyperdown from 'hyperdown'
 
 var demo = 'https://raw.githubusercontent.com/bevacqua/woofmark/master/resources/demo.png';
 var rfence = /(^|\s)md-lang-((?:[^\s]|$)+)/;

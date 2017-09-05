@@ -1,6 +1,3 @@
-.template {
-	display: none;
-}
 
 .wk-hide {
   display: none !important;
@@ -119,13 +116,18 @@
 
 
 .wk-container {
-  background-color: #ecf0f1;
-  color: #a469bc;
+  //background-color: #ecf0f1;
+  //color: #a469bc;
+}
+
+.wk-container textarea:focus {
+  border: none;
+  box-shadow: none;
 }
 
 .wk-wysiwyg {
-  -background-color: #a469bc;
-  color: #888;
+  //background-color: #a469bc;
+  //color: #888;
   outline: none;
   outline:none;
 }
@@ -147,7 +149,7 @@
   z-index: 1;
 }
 
-
+/*
 .md-code-block,
 :not(.md-code-block) > .md-code {
   line-height: 22px;
@@ -253,3 +255,4 @@ color #900 {
   background-color: #ffe270;
   padding: 1px 2px;
 }
+*/

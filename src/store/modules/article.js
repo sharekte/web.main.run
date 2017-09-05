@@ -24,7 +24,7 @@ const getters = {
 
 const actions = {
     get_articles ({commit, state}) {
-        Article.get({page: state.page, per_page: 2}).then(response => {
+        Article.get({page: state.page, per_page: 10}).then(response => {
             if (response.body.Success) {
                 commit('SET_ARTICLES', response.body.Data.Articles)
                 commit('SET_COUNT', response.body.Data.Count)

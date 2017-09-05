@@ -11,7 +11,6 @@ import c404 from '@/components/404'
 
 import Demo from '@/components/Demo'
 import Editor from '@/components/Editor'
-import cc from '@/components/cc'
 import Login from '@/components/Login'
 
 export default new Router({
@@ -34,9 +33,6 @@ export default new Router({
       }, {
         path: '/editor',
         component: Editor
-      }, {
-        path: '/cc',
-        component: cc
       }]
     },
     {
