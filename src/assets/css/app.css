@@ -134,7 +134,7 @@
 
 .wk-commands,
 .wk-switchboard {
-  display: inline-block;
+  display: none;
 }
 
 .wk-mode-active {
