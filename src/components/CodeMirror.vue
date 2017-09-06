@@ -119,7 +119,7 @@
 
       // require theme
       if (theme && _loadtheme) {
-        require('codemirror/theme/' + theme + '.css')
+        //require('codemirror/theme/' + theme + '.css')
       }
     },
     mounted: function() {
@@ -133,6 +133,7 @@
           _this.$emit('input', _this.content)
         }
       })
+      
       this.editor.setSize('auto', 'auto')
 
       var events = [

@@ -37,7 +37,7 @@ export default {
       this.content = val.Release.Content
     },
     content(val, oldval) {
-      console.log(val)
+      //console.log(val)
     }
   },
   created() {
@@ -50,9 +50,6 @@ export default {
     getContent() {
       console.log(this.content)
     },
-    aa(val) {
-      console.log(val)
-    }
   }
 }
 </script>

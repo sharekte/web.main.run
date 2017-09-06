@@ -2,7 +2,7 @@
   <div class="editor">
     <div class="editor-body">
       <div class="left">
-        <codemirror ref="myEditor" v-model="code" :options="editorOption"></codemirror>
+        <codemirror ref="myEditor" v-model="code" :options="editorOption" @inputRead="refresh"></codemirror>
       </div>
       <div class="right">
         <div v-html="html">
@@ -17,9 +17,10 @@
 import codemirror from '@/components/CodeMirror'
 import MarkdownIt from 'markdown-it'
 
-require('codemirror/addon/selection/active-line.js')
-require('codemirror/addon/selection/mark-selection.js')
+//require('codemirror/addon/selection/active-line.js')
 require('codemirror/keymap/sublime.js')
+
+import '@/assets/css/paraiso-light2.css'
 
 export default {
   components: {
@@ -34,10 +35,11 @@ export default {
         styleActiveLine: true,
         lineNumbers: true,
         line: true,
-        mode: 'text/x-markdown',
-        theme: 'paraiso-light',
+        mode: 'text/x-gfm',
+        theme: 'paraiso-light2',
         lineWrapping: true,
         keyMap: "sublime",
+        highlightFormatting: true,
       }
     }
   },
@@ -60,7 +62,9 @@ export default {
 
   },
   methods: {
-    
+    refresh: function(editor) {
+      editor.refresh()
+    }
   }
 
 }
