@@ -1,4 +1,5 @@
-import { SET_ARTICLES, ADD_PAGE, SET_COUNT, HAS_MORE, SET_ARTICLE_RELEASE } from '../mutation-types'
+import { SET_ARTICLES, ADD_PAGE, SET_COUNT, HAS_MORE, SET_ARTICLE_RELEASE,
+ SET_CURRENT_ARTICLE_ID, SET_CURRENT_RELEASE_ID} from '../mutation-types'
 import { Article } from '@/resource'
 
 const state = {
@@ -7,7 +8,10 @@ const state = {
     count: 0,
     hasMore: true,
 
-    article: {}
+    article: {},
+
+    currentArticleId: '',
+    currentReleaseId: ''
 }
 
 const getters = {
@@ -19,6 +23,12 @@ const getters = {
     },
     getArticleRelease: (state) => {
         return state.article
+    },
+    getCurrentArticleId: (state) => {
+        return state.currentArticleId
+    },
+    getCurrentReleaseId: (state) => {
+        return state.currentReleaseId
     }
 }
 
@@ -40,6 +50,17 @@ const actions = {
         Article.get({id: params.id, action: 'release', id2: params.id2}).then(response => {
             if (response.body.Success) {
                 commit('SET_ARTICLE_RELEASE', response.body.Data)
+            }
+        })
+    },
+    new_article ({commit, state}) {
+
+    },
+    commit_article ({commit, state}, content) {
+        Article.update({id: state.article.Id, action: 'release'}, {Content: content}).then(response => {
+            if (response.body.Success) {
+                commit('SET_CURRENT_ARTICLE_ID', response.body.Data.ArticleId)
+                commit('SET_CURRENT_RELEASE_ID', response.body.Data.ReleaseId)
             }
         })
     }
@@ -64,6 +85,14 @@ const mutations = {
 
     [SET_ARTICLE_RELEASE] (state, article) {
         state.article = article
+    },
+
+    [SET_CURRENT_ARTICLE_ID] (state, id) {
+        state.currentArticleId = id
+    },
+
+    [SET_CURRENT_RELEASE_ID] (state, id) {
+        state.currentReleaseId = id
     }
 }
 

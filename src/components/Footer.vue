@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="footer-main">
-      Copyright © 2016 Mcorce.com . All rights reserved
+      Copyright © 2017 MAIN.RUN . All rights reserved
     </div>
   </footer>
 </template>
