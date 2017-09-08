@@ -1,17 +1,21 @@
 <template>
   <div class="view">
-  <h1 class="align-center">{{article.Title}}</h1>
+  <!-- <h1 class="align-center">{{title}}</h1> -->
+    <div class="title">
+      <input type="text" name="" placeholder="标题">
+    </div>
+
     <div class="function">
       <ul class="actions align-center">
         <li><button class="special small" @click="edit">edit</button></li>
-        <li v-if="canCommit"><button class="special small" @click="commit">commit</button></li>
+        <li><button class="special small" @click="commit">commit</button></li>
         <li><button class="special small" @click="onMarkdown">Markdown</button></li>
         <li><button class="special small" @click="onPreview">Preview</button></li>
       </ul>
     </div>
     <article>
       <div class="content">
-        <md-editor :content.sync="content" :markdown="markdown" :preview="preview"></md-editor>
+        <md-editor :content.sync="content" :markdown="markdown" :preview="preview" :isEdit="false"></md-editor>
       </div>
     </article>
   </div>
@@ -27,19 +31,13 @@ export default {
   },
   data () {
     return {
-      preContent: '',
+      title: '',
       content: '',
-      markdown: false,
+      markdown: true,
       preview: true
     }
   },
   computed: {
-    article() {
-      return this.$store.getters.getArticleRelease
-    },
-    canCommit() {
-      return this.content !== this.preContent
-    },
     currentArticleId() {
       return this.$store.getters.getCurrentArticleId
     },
@@ -48,13 +46,8 @@ export default {
     }
   },
   watch: {
-    article(val, oldval) {
-      this.preContent = val.Release.Content
-      this.content = val.Release.Content
-    },
     currentReleaseId(val, oldval) {
       this.$router.push({name: 'view', params:{ id: this.currentArticleId, id2: this.currentReleaseId } })
-      console.log({name: 'view', id: this.currentArticleId, id2: this.currentReleaseId})
     },
     $route(val, oldval) {
       this.fecthDate()
@@ -62,12 +55,9 @@ export default {
     }
   },
   created() {
-    this.fecthDate()
+
   },
   methods: {
-    fecthDate() {
-      this.$store.dispatch('get_article_release', this.$route.params)
-    },
     edit() {
       this.markdown = true
       this.preview = true
@@ -95,5 +85,11 @@ export default {
 .view {
   margin: 20px auto;
   width: 1200px;
+  
+  .title {
+    margin: 0 auto;
+    padding-bottom: 20px;
+    width: 700px;
+  }
 }
 </style>

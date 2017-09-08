@@ -1,32 +1,39 @@
 <template>
   <header>
     <div class="header-main">
-      
-      <!-- <div class="logo">
-        afdsa
+      <div class="logo">
+        <router-link :to="{ name: 'home' }">MAIN.RUN</router-link>
       </div>
       <div class="menu">
-        <ul>
-          <li>adf</li>
-          <li>asfd</li>
-          <li>fadfs</li>
+        <ul class="actions align-center">
+          <li v-if="!isLogin"><button class="special" @click="toLogin">登录</button></li>
+          <li v-if="isLogin"><button class="special" @click="toNew">新增</button></li>
         </ul>
-      </div> -->
+
+      </div>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  computed: {
+    isLogin() {
+      return this.$store.getters.getToken
+    }
+  },
+  methods: {
+    toLogin() {
+      this.$router.push({name: 'login'})
+    },
+    toNew() {
+      this.$router.push({name: 'new'})
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 header {
   border-bottom: 1px solid #F5F5F5;
 }
@@ -45,9 +52,9 @@ header {
       float: right;
       height: 100px;
       line-height: 100px;
-      padding-right: 100px;
+      //padding-right: 100px;
     }
       .menu ul li {
-        margin-right: 20px;
+        //margin-right: 20px;
       }
 </style>

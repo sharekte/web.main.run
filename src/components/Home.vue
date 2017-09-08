@@ -99,7 +99,7 @@ export default {
 
 .main {
   margin: 0 auto;
-  width: 700px;
+  width: 900px;
   
   .article {
     padding: 1rem;

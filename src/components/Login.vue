@@ -31,6 +31,7 @@ export default {
     token (val, oldVal) {
       if (val.length > 100) {
         this.$router.push({name: 'home'})
+        //this.$router.router.go(-1)
       }
     }
   },

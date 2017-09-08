@@ -23,6 +23,9 @@ const actions = {
                 LocalStore.set('Token', response.body.Data.Token)
             }
         })
+    },
+    set_token ({commit, state}, token) {
+        commit('SAVE_TOKEN', token)
     }
 }
 

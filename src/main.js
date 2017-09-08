@@ -30,7 +30,6 @@ Vue.use(Toasted, {
 //console.log(Vue.resource('http://127.0.0.1:8000/user'))
 
 Vue.http.interceptors.push(function(request, next) {
-    //LocalStore.set('Token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1OTljMGYzMjAwMDAwMDkzNjBiODAxNDciLCJEYXRlIjoxNTAzODk0OTcwfQ.h9wYvVgexD7BLKos-wjZRwr0Fstst2STDbekfag2rcQ')
     
     if (LocalStore.get('Token')) {
         request.headers.set('Token', LocalStore.get('Token'));
@@ -38,7 +37,7 @@ Vue.http.interceptors.push(function(request, next) {
 
     next(function(response) {
         if (response.status == 401) {
-            router.push('login')
+            router.push({name: 'login'})
         }
     })
 })

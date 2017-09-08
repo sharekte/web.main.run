@@ -22,6 +22,8 @@ require('codemirror/keymap/sublime.js')
 
 import '@/assets/css/paraiso-light2.css'
 
+import HtmlDiff from '@/lib/htmldiff.js'
+
 export default {
   components: {
     codemirror
@@ -30,6 +32,7 @@ export default {
     return {
       code: '',
       html: '',
+      preHtml: '',
       editorOption: {
         tabSize: 4,
         styleActiveLine: true,
@@ -55,6 +58,10 @@ export default {
     preview: {
       type: Boolean,
       default: true
+    },
+    isEdit: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -62,7 +69,17 @@ export default {
   },
   watch: {
     code(val, Oldval) {
-      this.html = this.md.render(val)
+
+      if (this.preHtml === '') {
+        this.preHtml = this.md.render(val)
+      }
+
+      if (this.isEdit) {
+        this.html = HtmlDiff.compare(this.preHtml, this.md.render(val))
+      } else {
+        this.html = this.md.render(val)
+      }
+
       this.$emit('update:content', val)
     },
     content(val, Oldval) {
@@ -79,7 +96,7 @@ export default {
     this.md = new MarkdownIt()
   },
   mounted () {
-
+    this.aaa()
   },
   methods: {
     refresh (editor) {

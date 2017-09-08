@@ -1,20 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
 import Home from '@/components/Home'
 import Main from '@/components/Main'
 import View from '@/components/View'
+import New  from '@/components/New'
 import c404 from '@/components/404'
 
-import MdEditor from '@/components/MdEditor'
-
 import Demo from '@/components/Demo'
-import Editor from '@/components/Editor'
 import Login from '@/components/Login'
-import Code from '@/components/Code'
 
 export default new Router({
   mode: 'history',
@@ -34,14 +30,9 @@ export default new Router({
       	path: '/demo',
       	component: Demo
       }, {
-        path: '/editor',
-        component: Editor
-      }, {
-        path: '/code',
-        component: Code
-      }, {
-        path: '/md',
-        component: MdEditor
+        path: '/new',
+        name: 'new',
+        component: New
       }]
     },
     {
