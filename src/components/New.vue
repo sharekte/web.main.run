@@ -2,7 +2,7 @@
   <div class="view">
   <!-- <h1 class="align-center">{{title}}</h1> -->
     <div class="title">
-      <input type="text" name="" placeholder="标题">
+      <input type="text" name="" v-model="title" placeholder="标题">
     </div>
 
     <div class="function">
@@ -71,7 +71,7 @@ export default {
       this.preview = true
     },
     commit() {
-      this.$store.dispatch('commit_article', this.content)
+      this.$store.dispatch('new_article', {Title: this.title, Content: this.content})
     },
     refresh() {
       this.markdown = false

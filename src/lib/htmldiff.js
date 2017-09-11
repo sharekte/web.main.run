@@ -105,7 +105,7 @@ var htmldiff = {
         var b = new Array();
         for (var i = 0; i < d.length; i++) {
             var c = d[i];
-            if (b[c])
+            if (Array.isArray(b[c]))
                 b[c].push(i);
             else
                 b[c] = [i];

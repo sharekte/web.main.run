@@ -53,8 +53,13 @@ const actions = {
             }
         })
     },
-    new_article ({commit, state}) {
-
+    new_article ({commit, state}, params) {
+        Article.save({}, params).then(response => {
+            if (response.body.Success) {
+                commit('SET_CURRENT_ARTICLE_ID', response.body.Data.ArticleId)
+                commit('SET_CURRENT_RELEASE_ID', response.body.Data.ReleaseId)
+            }
+        })
     },
     commit_article ({commit, state}, content) {
         Article.update({id: state.article.Id, action: 'release'}, {Content: content}).then(response => {
