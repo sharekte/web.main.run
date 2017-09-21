@@ -13,7 +13,7 @@ import Footers from '@/components/Footer'
 export default {
   components: {
     Headers,
-    Footers,
+    Footers
   },
   data () {
     return {
@@ -25,6 +25,6 @@ export default {
 
 <style scoped>
 .main {
-
+  position: relative
 }
 </style>
