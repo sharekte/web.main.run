@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div class="home-bg">
-      <div class="slant-left"></div>
-      <div class="slant-right"></div>
+      <!-- <div class="slant-left"></div>
+      <div class="slant-right"></div> -->
       <div class="info">
-        Hello
+        
       </div>
     </div>
     <section class="main">
@@ -58,7 +58,7 @@ export default {
   .home-bg {  
     position: relative;
     width: 100%;
-    height: 550px;
+    height: 400px;
     background-image: url(../assets/images/home-bg.jpg);
     background-position: center center;
     background-repeat: no-repeat;
@@ -89,7 +89,7 @@ export default {
       max-width: 800px;
       height: 200px;
       -background: #ff6600;
-      top: 35%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%,-50%);
       text-align: center;
@@ -98,8 +98,8 @@ export default {
     }
 
 .main {
-  margin: 0 auto;
-  width: 900px;
+  margin: 10px auto;
+  max-width: 1200px;
   
   .article {
     padding: 1rem;

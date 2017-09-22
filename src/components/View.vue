@@ -54,11 +54,10 @@ export default {
     },
     currentReleaseId(val, oldval) {
       this.$router.push({name: 'view', params:{ id: this.currentArticleId, id2: this.currentReleaseId } })
-      console.log({name: 'view', id: this.currentArticleId, id2: this.currentReleaseId})
     },
     $route(val, oldval) {
-      this.fecthDate()
-      this.refresh()
+     this.fecthDate()
+     this.refresh()
     }
   },
   created() {
