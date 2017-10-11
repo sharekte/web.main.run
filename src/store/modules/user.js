@@ -18,9 +18,9 @@ const getters = {
 const actions = {
     login ({commit, state}, data) {
         User.save({action: 'login'}, data).then(response => {
-            if (response.body.Success) {
-                commit('SAVE_TOKEN', response.body.Data.Token)
-                LocalStore.set('Token', response.body.Data.Token)
+            if (response.body.success) {
+                commit('SAVE_TOKEN', response.body.data.token)
+                LocalStore.set('Token', response.body.data.token)
             }
         })
     },

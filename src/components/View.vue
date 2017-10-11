@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-  <h1 class="align-center">{{article.Title}}</h1>
+  <h1 class="align-center">{{article.title}}</h1>
     <div class="function">
       <ul class="actions align-center">
         <li><button class="special small" @click="edit">edit</button></li>
@@ -35,25 +35,22 @@ export default {
   },
   computed: {
     article() {
-      return this.$store.getters.getArticleRelease
+      return this.$store.getters.getArticle
     },
     canCommit() {
       return this.content !== this.preContent
     },
     currentArticleId() {
       return this.$store.getters.getCurrentArticleId
-    },
-    currentReleaseId() {
-      return this.$store.getters.getCurrentReleaseId
     }
   },
   watch: {
     article(val, oldval) {
-      this.preContent = val.Release.Content
-      this.content = val.Release.Content
+      this.preContent = val.content
+      this.content = val.content
     },
-    currentReleaseId(val, oldval) {
-      this.$router.push({name: 'view', params:{ id: this.currentArticleId, id2: this.currentReleaseId } })
+    currentArticleId(val, oldval) {
+      this.$router.push({name: 'view', params:{ id: this.currentArticleId} })
     },
     $route(val, oldval) {
      this.fecthDate()
@@ -65,7 +62,7 @@ export default {
   },
   methods: {
     fecthDate() {
-      this.$store.dispatch('get_article_release', this.$route.params)
+      this.$store.dispatch('get_article', this.$route.params)
     },
     edit() {
       this.markdown = true
@@ -80,7 +77,7 @@ export default {
       this.preview = true
     },
     commit() {
-      this.$store.dispatch('commit_article', this.content)
+      this.$store.dispatch('update_article', {"title": this.article.title, "content": this.content, "image": []})
     },
     refresh() {
       this.markdown = false

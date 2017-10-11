@@ -4,12 +4,12 @@
       <div class="logo">
         <router-link :to="{ name: 'home' }">MAIN.RUN</router-link>
       </div>
-      <div class="menu">
+      <!-- <div class="menu">
         <ul class="actions align-center">
           <li><button class="" @click="toLogin">文章</button></li>
           <li><button class="" @click="toNew">专题</button></li>
         </ul>
-      </div>
+      </div> -->
       <div class="menu">
         <ul class="actions align-center">
           <li v-if="!isLogin"><button class="special" @click="toLogin">登录</button></li>

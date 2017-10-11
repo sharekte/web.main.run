@@ -1,4 +1,4 @@
-import { SET_ARTICLES, ADD_PAGE, SET_COUNT, HAS_MORE, SET_ARTICLE_RELEASE,
+import { SET_ARTICLES, ADD_PAGE, SET_COUNT, HAS_MORE, SET_ARTICLE,
  SET_CURRENT_ARTICLE_ID, SET_CURRENT_RELEASE_ID} from '../mutation-types'
 import { Article } from '@/resource'
 
@@ -10,8 +10,7 @@ const state = {
 
     article: {},
 
-    currentArticleId: '',
-    currentReleaseId: ''
+    currentArticleId: ''
 }
 
 const getters = {
@@ -21,23 +20,20 @@ const getters = {
     hasMore: (state) => {
         return state.hasMore
     },
-    getArticleRelease: (state) => {
+    getArticle: (state) => {
         return state.article
     },
     getCurrentArticleId: (state) => {
         return state.currentArticleId
-    },
-    getCurrentReleaseId: (state) => {
-        return state.currentReleaseId
     }
 }
 
 const actions = {
     get_articles ({commit, state}) {
         Article.get({page: state.page, per_page: 10}).then(response => {
-            if (response.body.Success) {
-                commit('SET_ARTICLES', response.body.Data.Articles)
-                commit('SET_COUNT', response.body.Data.Count)
+            if (response.body.success) {
+                commit('SET_ARTICLES', response.body.data.articles)
+                commit('SET_COUNT', response.body.data.count)
                 commit('ADD_PAGE')
             }
         })
@@ -46,26 +42,24 @@ const actions = {
             commit('HAS_MORE', false)
         }
     },
-    get_article_release ({commit, state}, params) {
-        Article.get({id: params.id, action: 'release', id2: params.id2}).then(response => {
-            if (response.body.Success) {
-                commit('SET_ARTICLE_RELEASE', response.body.Data)
+    get_article ({commit, state}, params) {
+        Article.get({id: params.id}).then(response => {
+            if (response.body.success) {
+                commit('SET_ARTICLE', response.body.data)
             }
         })
     },
     new_article ({commit, state}, params) {
         Article.save({}, params).then(response => {
-            if (response.body.Success) {
-                commit('SET_CURRENT_ARTICLE_ID', response.body.Data.ArticleId)
-                commit('SET_CURRENT_RELEASE_ID', response.body.Data.ReleaseId)
+            if (response.body.success) {
+                commit('SET_CURRENT_ARTICLE_ID', response.body.data.article_id)
             }
         })
     },
-    commit_article ({commit, state}, content) {
-        Article.update({id: state.article.Id, action: 'release'}, {Content: content}).then(response => {
-            if (response.body.Success) {
-                commit('SET_CURRENT_ARTICLE_ID', response.body.Data.ArticleId)
-                commit('SET_CURRENT_RELEASE_ID', response.body.Data.ReleaseId)
+    update_article ({commit, state}, params) {
+        Article.update({id: state.article.id}, params).then(response => {
+            if (response.body.success) {
+                commit('SET_CURRENT_ARTICLE_ID', response.body.data.article_id)
             }
         })
     }
@@ -88,16 +82,12 @@ const mutations = {
         state.hasMore = hasMore
     },
 
-    [SET_ARTICLE_RELEASE] (state, article) {
+    [SET_ARTICLE] (state, article) {
         state.article = article
     },
 
     [SET_CURRENT_ARTICLE_ID] (state, id) {
         state.currentArticleId = id
-    },
-
-    [SET_CURRENT_RELEASE_ID] (state, id) {
-        state.currentReleaseId = id
     }
 }
 

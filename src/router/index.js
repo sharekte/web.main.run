@@ -30,7 +30,7 @@ export default new Router({
         name: 'home',
       	component: Home
       },{
-        path: '/view/:id([a-z0-9]{24})/release/:id2([a-z0-9]{24})',
+        path: '/view/:id([a-z0-9]{24})',
         name: 'view',
         component: View
       }, {

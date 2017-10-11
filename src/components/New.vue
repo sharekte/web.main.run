@@ -40,14 +40,11 @@ export default {
   computed: {
     currentArticleId() {
       return this.$store.getters.getCurrentArticleId
-    },
-    currentReleaseId() {
-      return this.$store.getters.getCurrentReleaseId
     }
   },
   watch: {
-    currentReleaseId(val, oldval) {
-      this.$router.push({name: 'view', params:{ id: this.currentArticleId, id2: this.currentReleaseId } })
+    currentArticleId(val, oldval) {
+      this.$router.push({name: 'view', params:{ id: this.currentArticleId} })
     },
     $route(val, oldval) {
       this.fecthDate()
@@ -71,7 +68,7 @@ export default {
       this.preview = true
     },
     commit() {
-      this.$store.dispatch('new_article', {Title: this.title, Content: this.content})
+      this.$store.dispatch('new_article', {title: this.title, content: this.content, image: []})
     },
     refresh() {
       this.markdown = false

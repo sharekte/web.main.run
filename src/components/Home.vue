@@ -9,8 +9,8 @@
     </div>
     <section class="main">
       <div class="article" v-for="article in articles">
-        <h3>{{article.Title}}</h3>
-        <router-link :to="{ name: 'view', params: { id: article.Id, id2: article.Release.Id }}">查看</router-link>
+        <h3>{{article.title}}</h3>
+        <router-link :to="{ name: 'view', params: { id: article.id}}">查看</router-link>
       </div>
       <button class="fit special" @click="fecthDate" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</button>
       <button class="fit" v-else>没有更多了</button>

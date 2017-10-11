@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     submit () {
-      this.$store.dispatch('login', {Username: this.username, Password: this.password})
+      this.$store.dispatch('login', {username: this.username, password: this.password})
     }
   }
 }
