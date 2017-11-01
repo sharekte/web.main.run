@@ -1,19 +1,20 @@
 <template>
   <header>
-    <div class="header-main">
-      <div class="logo">
-        <router-link :to="{ name: 'home' }">MAIN.RUN</router-link>
+    <div class="home-bg">
+      <div class="info">
+
       </div>
-      <!-- <div class="menu">
-        <ul class="actions align-center">
-          <li><button class="" @click="toLogin">文章</button></li>
-          <li><button class="" @click="toNew">专题</button></li>
-        </ul>
-      </div> -->
+    </div>
+    <div class="header-main">
       <div class="menu">
-        <ul class="actions align-center">
-          <li v-if="!isLogin"><button class="special" @click="toLogin">登录</button></li>
-          <li v-if="isLogin"><button class="special" @click="toNew">新增</button></li>
+        <ul>
+          <li><router-link :to="{ name: 'home' }">首页</router-link></li>
+          <li><router-link :to="{ name: 'home' }">文章</router-link></li>
+          <li><router-link :to="{ name: 'home' }">专题</router-link></li>
+          <li><router-link :to="{ name: 'home' }">关于</router-link></li>
+          <li v-show="isLogin"><router-link :to="{ name: 'new' }">写作</router-link></li>
+          <li v-if="!isLogin"><router-link :to="{ name: 'login' }">登录</router-link></li>
+          <li v-if="isLogin"><a @click="toLogin">注销</a></li>
         </ul>
       </div>
     </div>
@@ -34,6 +35,12 @@ export default {
     toNew() {
       this.$router.push({name: 'new'})
     }
+  },
+  mounted () {
+    console.log(this.$route.name == 'home')
+  },
+  $route(val, oldval) {
+     console.log(val)
   }
 }
 </script>
@@ -41,23 +48,52 @@ export default {
 <style lang="stylus" scoped>
 header {
   border-bottom: 1px solid #F5F5F5;
-}     
+}
+  .home-bg {  
+    position: relative;
+    width: 100%;
+    height: 36rem;
+    background-image: url(../assets/images/home-bg.jpg);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+
+    .info {
+      position: relative;
+      max-width: 80rem;
+      height: 20rem;
+      -background: #ff6600;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      font-size: 10rem;
+      color: #ffffff;
+    }
+  }
+     
   .header-main {
     margin: 0 auto;
-    height: 100px;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between;
-    
-    .logo {
-      height: 100px;
-      line-height: 100px;
-      font-size: 4rem;
-    }
+    height: 6rem;
+    max-width: 120rem;
     
     .menu {
-      height: 100px;
-      line-height: 100px;
+      height: 10rem;
+      line-height: 6rem;
+      
+      ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        
+        li {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          font-size: 1.8rem;
+        }
+      }
     }
   }
 </style>

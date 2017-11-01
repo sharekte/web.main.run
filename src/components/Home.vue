@@ -1,12 +1,5 @@
 <template>
   <div class="home">
-    <div class="home-bg">
-      <!-- <div class="slant-left"></div>
-      <div class="slant-right"></div> -->
-      <div class="info">
-        
-      </div>
-    </div>
     <section class="main">
       <div class="article" v-for="article in articles">
         <h3>{{article.title}}</h3>
@@ -45,6 +38,11 @@ export default {
     fecthDate() {
       this.$store.dispatch('get_articles')
     }
+  },
+  watch: {
+    $route(val, oldval) {
+     this.fecthDate()
+    }
   }
 }
 </script>
@@ -55,47 +53,6 @@ export default {
   position: relative;
   overflow: hidden;
 }
-  .home-bg {  
-    position: relative;
-    width: 100%;
-    height: 400px;
-    background-image: url(../assets/images/home-bg.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    z-index: -1;
-  }
-    .slant-left {
-      width: 101%;
-      height: 200px;
-      position: absolute;
-      bottom: -12%;
-      right: 48%;
-      transform: rotate(6deg);
-      background: #FFF;
-    }
-    .slant-right {
-      width: 101%;
-      height: 200px;
-      position: absolute;
-      bottom: -12%;
-      left: 48%;
-      transform: rotate(-6deg);
-      background: #FFF;
-    }
-    .info {
-      position: relative;
-      max-width: 800px;
-      height: 200px;
-      -background: #ff6600;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      text-align: center;
-      font-size: 10rem;
-      color: #ffffff;
-    }
 
 .main {
   margin: 10px auto;
