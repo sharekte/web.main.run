@@ -1,5 +1,5 @@
 import { SET_ARTICLES, ADD_PAGE, SET_COUNT, HAS_MORE, SET_ARTICLE,
- SET_CURRENT_ARTICLE_ID, SET_CURRENT_RELEASE_ID} from '../mutation-types'
+ SET_CURRENT_ARTICLE_ID} from '../mutation-types'
 import { Article } from '@/resource'
 
 const state = {
@@ -10,7 +10,9 @@ const state = {
 
     article: {},
 
-    currentArticleId: ''
+    currentArticleId: '',
+
+    pic_next: 1
 }
 
 const getters = {
@@ -67,6 +69,14 @@ const actions = {
 
 const mutations = {
     [SET_ARTICLES] (state, articles) {
+        articles.forEach(function(value, index, array) {
+            value.img = 'https://cdn1.01io.com/temp/' + state.pic_next + '.png'
+            state.pic_next += 1
+            if (state.pic_next > 12 ) {
+                state.pic_next = 1
+            }
+        })
+
         state.articles.push(...articles)
     },
 

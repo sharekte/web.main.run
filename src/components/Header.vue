@@ -8,13 +8,13 @@
     <div class="header-main">
       <div class="menu">
         <ul>
-          <li><router-link :to="{ name: 'home' }">首页</router-link></li>
+          <!-- <li><router-link :to="{ name: 'home' }">首页</router-link></li> -->
           <li><router-link :to="{ name: 'home' }">文章</router-link></li>
           <li><router-link :to="{ name: 'home' }">专题</router-link></li>
-          <li><router-link :to="{ name: 'home' }">关于</router-link></li>
+          <!-- <li><router-link :to="{ name: 'home' }">关于</router-link></li> -->
           <li v-show="isLogin"><router-link :to="{ name: 'new' }">写作</router-link></li>
           <li v-if="!isLogin"><router-link :to="{ name: 'login' }">登录</router-link></li>
-          <li v-if="isLogin"><a @click="toLogin">注销</a></li>
+          <li v-if="isLogin"><a @click="toLogout">注销</a></li>
         </ul>
       </div>
     </div>
@@ -32,15 +32,15 @@ export default {
     toLogin() {
       this.$router.push({name: 'login'})
     },
+    toLogout() {
+      this.$store.dispatch('logout')
+    },
     toNew() {
       this.$router.push({name: 'new'})
     }
   },
   mounted () {
-    console.log(this.$route.name == 'home')
-  },
-  $route(val, oldval) {
-     console.log(val)
+    //console.log(this.$route.name == 'home')
   }
 }
 </script>
