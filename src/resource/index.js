@@ -5,6 +5,9 @@ Vue.use(vueResource)
 
 export const User = Vue.resource('https://api.main.run/user{/action}')
 export const Article = Vue.resource('https://api.main.run/article{/id}')
+export const Collect = Vue.resource('https://api.main.run/collect{/id}{/action}')
 
-//export const User = Vue.resource('http://127.0.0.1:8000/user{/action}')
-//export const Article = Vue.resource('http://127.0.0.1:8000/article{/id}')
+//export const User = Vue.resource('http://116.196.122.79:9001/user{/action}')
+//export const Article = Vue.resource('http://116.196.122.79:9001/article{/id}')
+//export const Collect = Vue.resource('http://116.196.122.79:9001/collect{/id}{/action}')
+

@@ -14,7 +14,7 @@ export default {
   name: 'PageLoader',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
   },
   mounted () {

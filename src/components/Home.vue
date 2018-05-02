@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <button class="fit special" @click="fecthDate" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</button>
+      <button class="fit special" @click="loadMore" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</button>
       <button class="fit" v-else>没有更多了</button>
     </section>
   </div>
@@ -34,28 +34,32 @@ export default {
       return this.$store.getters.getArticles
     },
     hasMore() {
-      return this.$store.getters.hasMore
+      return this.$store.getters.hasArticles
     }
   },
   created() {
     this.fecthDate()
   },
   mounted () {
-    //console.log(this.articles)
+    if (this.$store.getters.hasArticleUpdate) {
+      this.fecthDate()
+      this.$store.dispatch('has_update_reset')
+    }
   },
   methods: {
     fecthDate() {
       this.$store.dispatch('get_articles')
+    },
+    loadMore() {
+      this.$store.dispatch('get_articles_more')
     },
     linkTo(id) {
       this.$router.push({name: 'view', params: { id: id}})
     }
   },
   watch: {
-    $route(val, oldval) {
-     this.fecthDate()
-    }
-  }
+
+  },
 }
 </script>
 <style lang="stylus" scoped>

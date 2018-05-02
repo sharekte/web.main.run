@@ -31,8 +31,8 @@ Vue.use(Toasted, {
 
 Vue.http.interceptors.push(function(request, next) {
     
-    if (LocalStore.get('Token')) {
-        request.headers.set('Token', LocalStore.get('Token'));
+    if (LocalStore.get('token')) {
+        request.headers.set('Token', LocalStore.get('token'));
     }
 
     next(function(response) {

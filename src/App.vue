@@ -11,9 +11,17 @@ export default {
   },
   methods: {
     getToken() {
-      if (LocalStore.get('Token')) {
-        this.$store.dispatch('set_token', LocalStore.get('Token'))
+      if (LocalStore.get('token')) {
+        this.$store.dispatch('set_token', LocalStore.get('token'))
       }
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      // 对路由变化作出响应...
+    },
+    $route(val, oldval) {
+      //console.log("route watch")
     }
   }
 }

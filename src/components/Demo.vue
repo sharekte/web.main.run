@@ -436,7 +436,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                   </ul>
                 </form>
 
-                <form method="post" action="#">
+          <form method="post" action="#">
             <div class="row uniform">
               <div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
               <div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
@@ -448,6 +448,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
               </div>
             </div>
           </form>
+
+          <button class="aaa">
+            hahaha
+          </button>
+          <button class="bbb">
+            hahaha
+          </button>
   </div>
 </div>
 </template>
@@ -476,4 +483,26 @@ export default {
     .demo .v-box {
       box-shadow: inset 0 0 0 1px #dddddd;
     }
+
+.aaa {
+  box-shadow: inset -1px -1px 0 2px #000000;
+}
+.aaa:hover {
+  box-shadow: inset 0 0 0 2px #000000;
+  transform:translate(1px,1px);
+}
+.aaa:active {
+  box-shadow: inset 0 0 0 1px #000000;
+}
+
+.bbb {
+  background-color: #9ed8b6;
+  box-shadow: inset -1px -1px 0 2px #7aca9a;
+}
+.bbb:hover {
+  box-shadow: inset 0 0 0 2px #7aca9a;
+}
+.bbb:active {
+  box-shadow: inset 0 0 0 1px #7aca9a;
+}
 </style>
