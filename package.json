@@ -11,11 +11,8 @@
   },
   "dependencies": {
     "codemirror": "^5.37.0",
-    "domador": "^2.4.4",
     "highlight.js": "^9.12.0",
     "markdown-it": "^8.4.1",
-    "megamark": "^3.3.0",
-    "quill-image-extend-module": "^1.1.2",
     "store": "^2.0.12",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -25,8 +22,7 @@
     "vue-resource": "^1.5.0",
     "vue-router": "^2.8.1",
     "vue-toasted": "^1.1.24",
-    "vuex": "^2.5.0",
-    "woofmark": "^4.2.3"
+    "vuex": "^2.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",

@@ -15,6 +15,7 @@ import '@/assets/stylus/style.styl'
 
 import '@/assets/css/style.css'
 import '@/assets/css/app.css'
+import 'highlight.js/styles/agate.css'
 
 Vue.use(vueResource)
 /*

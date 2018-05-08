@@ -36,7 +36,7 @@
       },
     },
     created: function() {
-
+      
       if (this.options.lineNumbers === undefined) {
         this.options.lineNumbers = true
       }

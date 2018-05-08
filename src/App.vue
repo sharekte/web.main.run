@@ -17,11 +17,8 @@ export default {
     }
   },
   watch: {
-    '$route' (to, from) {
-      // 对路由变化作出响应...
-    },
     $route(val, oldval) {
-      //console.log("route watch")
+      console.log("route watch")
     }
   }
 }

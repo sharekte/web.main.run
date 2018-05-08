@@ -125,10 +125,6 @@ const mutations = {
         }
     },
 
-    // [HAS_MORE] (state, hasMore) {
-    //     state.hasMore = hasMore
-    // },
-
     [SET_ARTICLE] (state, article) {
         state.article = article
     },

@@ -10,9 +10,9 @@
         <ul>
           <!-- <li><router-link :to="{ name: 'home' }">首页</router-link></li> -->
           <li><router-link :to="{ name: 'home' }">文章</router-link></li>
-          <li><router-link :to="{ name: 'collect' }">专题</router-link></li>
+          <!-- <li><router-link :to="{ name: 'collect' }">专题</router-link></li> -->
           <!-- <li><router-link :to="{ name: 'home' }">关于</router-link></li> -->
-          <li v-show="isLogin"><router-link :to="{ name: 'new' }">写作</router-link></li>
+          <li v-show="isLogin"><router-link :to="{ name: 'edit' }">写作</router-link></li>
           <li v-if="!isLogin"><router-link :to="{ name: 'login' }">登录</router-link></li>
           <li v-if="isLogin"><a @click="toLogout">注销</a></li>
         </ul>
@@ -53,7 +53,7 @@ header {
     position: relative;
     width: 100%;
     height: 10rem;
-    background-image: url(../assets/images/home-bg.jpg);
+    background-image: url(../../assets/images/home-bg.jpg);
     background-position: bottom center;
     background-repeat: no-repeat;
     background-attachment: fixed;
