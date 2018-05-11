@@ -47,12 +47,15 @@ export default {
         code(val, old_val) {
             this.html = this.md.render(val)
             this.$store.commit('EDIT_UPDATE_CONTENT', val)
-        },
-        article(val, old_val) {
-            this.code = val.content
+
         },
         articleId(val, old_val) {
-            this.$store.dispatch('edit_get_article', val)
+            if (val != "") {
+                this.$store.dispatch('edit_get_article', val)
+            }
+        },
+        articleContent(val, old_val) {
+            this.code = val
         }
     },
     created() {
@@ -82,7 +85,8 @@ export default {
     },
     computed: mapState({
         article: state => state.edit.article,
-        articleId: state => state.edit.article.id
+        articleId: state => state.edit.article.id,
+        articleContent: state => state.edit.article.content
     })
 }
 </script>

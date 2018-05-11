@@ -22,7 +22,7 @@ footer {
   border-top: 1px solid #F5F5F5;
 }
   .footer-main {
-    height: 100px;
+    /*height: 100px;*/
     line-height: 100px;
     text-align: center;
     color: #B9B9B9;

@@ -38,13 +38,19 @@ export default {
     }
   },
   created() {
-    this.fecthDate()
+    //this.fecthDate()
+    if (this.articles.length == 0) {
+      this.fecthDate()
+    } else if (this.$store.state.article.has_update) {
+      this.$store.dispatch('refrash_articles')
+      this.$store.commit('HAS_UPDATE_RESET')
+    }
   },
   mounted () {
-    if (this.$store.getters.hasArticleUpdate) {
-      this.fecthDate()
-      this.$store.dispatch('has_update_reset')
-    }
+    // if (this.$store.getters.hasArticleUpdate) {
+    //   this.fecthDate()
+    //   this.$store.dispatch('has_update_reset')
+    // }
   },
   methods: {
     fecthDate() {

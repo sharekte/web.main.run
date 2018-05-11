@@ -9,6 +9,7 @@ const EDIT_SET_CURRENT_ARTICLE_ID = 'EDIT_SET_CURRENT_ARTICLE_ID'
 const EDIT_SAVE_ARTICLE = 'EDIT_SAVE_ARTICLE'
 const EDIT_UPDATE_TITLE = 'EDIT_UPDATE_TITLE'
 const EDIT_UPDATE_CONTENT = 'EDIT_UPDATE_CONTENT'
+const EDIT_RESRESH_ADTICLES = 'EDIT_RESRESH_ADTICLES'
 const EDIT_EDSTORY = 'EDIT_EDSTORY'
 
 const state = {
@@ -31,7 +32,7 @@ const getters = {
 
 const actions = {
     edit_get_articles　({commit, state}) {
-        Article.get({ page: 1, per_page: 15 }).then(response => {
+        Article.get({ page: 1, per_page: 6 }).then(response => {
             if (response.body.success) {
                 commit('EDIT_SET_ARTICLES', response.body.data.articles)
                 commit('EDIT_SET_COUNT', response.body.data.count)
@@ -40,7 +41,7 @@ const actions = {
         })
     },
     edit_get_articles_more ({commit, state}) {
-        Article.get({ page: state.page, per_page: 15 }).then(response => {
+        Article.get({ page: state.page, per_page: 6 }).then(response => {
             if (response.body.success) {
                 commit('EDIT_PUSH_ARTICLES', response.body.data.articles)
                 commit('EDIT_SET_COUNT', response.body.data.count)
@@ -48,10 +49,10 @@ const actions = {
             }
         })
     },
-    edit_refresh_articles ({commit, state}, plus) {
-        Article.get({ page: 1, per_page: state.articles.length + plus}).then(response => {
+    edit_refresh_articles ({commit, state}) {
+        Article.get({ page: 1, per_page: state.articles.length}).then(response => {
             if (response.body.success) {
-                commit('EDIT_SET_ARTICLES', response.body.data.articles)
+                commit('EDIT_RESRESH_ADTICLES', response.body.data.articles)
             }
         })
     },
@@ -62,19 +63,21 @@ const actions = {
             }
         })
     },
-    edit_save_article({dispatch, commit, state}) {
+    edit_save_article({store, dispatch, commit, state}) {
         if (state.article.id == '') {
             Article.save({}, state.article).then(response => {
                 if (response.body.success) {
                     commit('EDIT_SET_CURRENT_ARTICLE_ID', response.body.data.article_id)
-                    dispatch('edit_refresh_articles', 1)
+                    dispatch('edit_refresh_articles')
+                    commit('HAS_UPDATE')
                 }
             })
         } else {
             Article.update({ id: state.article.id }, state.article).then(response => {
                 if (response.body.success) {
                     commit('EDIT_SET_CURRENT_ARTICLE_ID', response.body.data.article_id)
-                    dispatch('edit_refresh_articles', 0)
+                    dispatch('edit_refresh_articles')
+                    commit('HAS_UPDATE')
                 }
             })
         }
@@ -122,13 +125,15 @@ const mutations = {
         state.article.content = content
     },
 
+    [EDIT_RESRESH_ADTICLES](state, articles) {
+        state.articles = articles
+    },
+
     [EDIT_EDSTORY](state) {
-        state.article = {
-            id: '',
-            title: '',
-            content: '',
-            image: []
-        }
+        state.article.id = ''
+        state.article.title = ''
+        state.article.content = 'afsassvvvvv'
+        state.article.image = []
     }
     
 }
