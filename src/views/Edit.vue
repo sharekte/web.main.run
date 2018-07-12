@@ -81,6 +81,7 @@ export default {
         }
     },
     mounted: function() {
+        this.newArticle()
         this.fetchData()
     },
     watch: {

@@ -52,7 +52,9 @@ export default {
             this.code = val.content
         },
         articleId(val, old_val) {
-            this.$store.dispatch('edit_get_article', val)
+            if (val !== undefined && val !== '') {
+                this.$store.dispatch('edit_get_article', val)
+            }
         }
     },
     created() {

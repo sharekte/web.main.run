@@ -1,10 +1,10 @@
 <template>
   <header>
-    <div class="home-bg">
+    <!-- <div class="home-bg">
       <div class="info">
 
       </div>
-    </div>
+    </div> -->
     <div class="header-main">
       <div class="menu">
         <ul>

@@ -58,6 +58,7 @@ const actions = {
     edit_get_article({commit, state}, id) {
         Article.get({ id: id }).then(response => {
             if (response.body.success) {
+                console.log(response.body.data)
                 commit('EDIT_SET_ARTICLE', response.body.data)
             }
         })
