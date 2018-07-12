@@ -33,7 +33,7 @@ const getters = {
         return state.currentArticleId
     },
     hasArticleUpdate: (state) => {
-        return state.has_update > 0
+        return state.has_update
     }
 }
 

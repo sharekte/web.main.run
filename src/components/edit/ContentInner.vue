@@ -50,7 +50,7 @@ export default {
 
         },
         articleId(val, old_val) {
-            if (val != "") {
+            if (val !== undefined && val !== '') {
                 this.$store.dispatch('edit_get_article', val)
             }
         },
