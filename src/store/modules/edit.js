@@ -32,7 +32,7 @@ const getters = {
 
 const actions = {
     edit_get_articles　({commit, state}) {
-        Article.get({ page: 1, per_page: 6 }).then(response => {
+        Article.get({ page: 1, per_page: 15 }).then(response => {
             if (response.body.success) {
                 commit('EDIT_SET_ARTICLES', response.body.data.articles)
                 commit('EDIT_SET_COUNT', response.body.data.count)
@@ -41,7 +41,7 @@ const actions = {
         })
     },
     edit_get_articles_more ({commit, state}) {
-        Article.get({ page: state.page, per_page: 6 }).then(response => {
+        Article.get({ page: state.page, per_page: 15 }).then(response => {
             if (response.body.success) {
                 commit('EDIT_PUSH_ARTICLES', response.body.data.articles)
                 commit('EDIT_SET_COUNT', response.body.data.count)
@@ -132,7 +132,7 @@ const mutations = {
     [EDIT_EDSTORY](state) {
         state.article.id = ''
         state.article.title = ''
-        state.article.content = 'afsassvvvvv'
+        state.article.content = ''
         state.article.image = []
     }
     
