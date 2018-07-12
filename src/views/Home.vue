@@ -15,8 +15,8 @@
         </div>
       </div> -->
             <div class="articles">
-                <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
-                    <div class="title"><h4>{{article.title}}</h4></div>
+                <div class="article" v-for="article in articles" :key="article.id">
+                    <div class="title" @click="linkTo(article.id)"><h4>{{article.title}}</h4></div>
                     <div class="description">x86架构下，函数执行借助于 hardware stack。为了不同模块函数能在runtime时可以互相调用，程序必须遵守共同的的Calling Convention，这也是ABI的一部分。推荐两本参考资料：x86架构下，函数执行借助于 hardware stack。为了不同模块函数能在runtime时可以互相调用，程序必须遵守共同的的Calling Convention，这也是ABI的一部分。推荐两本参考资料：</div>
                 </div>
             </div>
@@ -75,6 +75,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+@import "../../src/assets/stylus/variables.styl"
+
 .home {
     position: relative;
     overflow: hidden;
@@ -85,7 +87,20 @@ export default {
     max-width: 980px;
 
     .articles {
-        
+        padding-top: 40px;
+        .article {
+            margin-bottom: 40px
+            .title h4 {
+                color: font-a-color
+                cursor: pointer
+                display: inline-block
+                font-size: 2rem
+                
+                &:hover {
+                    color: font-a-hover-color
+                }
+            }
+        }
     }
 
   // .articles {
