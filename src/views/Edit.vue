@@ -1,32 +1,32 @@
 <template>
-  <div class="edit">
-      <div class="sidebar" v-on:scroll="onscroll" ref="sidebar">
-          <ul class="alt">
-              <li v-for="article in articles" :key="article.id">
-                  <div class="title" @click="setArticleId(article.id)">
-                      {{article.title}}
-                  </div>
-                  <!-- <div class="collect">
-                      <span>rust学习笔记</span>
-                      <span>随便</span>
-                  </div> -->
-                  <div class="time">
-                      {{article.create_at}}
-                  </div>
-              </li>
-          </ul>
-      </div>
-      <div class="main">
-          <div class="header">
-              <button class="small special" @click="newArticle">新建</button>
-              <button class="small special" @click="saveArticle">保存</button>
-              <button class="small special" style="float: right" @click="close">关闭</button>
-          </div>
-          <div class="content">
-              <content-inner></content-inner>
-          </div>
-      </div>
-  </div>
+    <div class="edit">
+        <div class="sidebar" v-on:scroll="onscroll" ref="sidebar">
+            <ul class="alt">
+                <li v-for="article in articles" :key="article.id">
+                    <div class="title" @click="setArticleId(article.id)">
+                        {{article.title}}
+                    </div>
+                    <!-- <div class="collect">
+                        <span>rust学习笔记</span>
+                        <span>随便</span>
+                    </div> -->
+                    <div class="time">
+                        {{article.create_at}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="header">
+                <button class="small special" @click="newArticle">新建</button>
+                <button class="small special" @click="saveArticle">保存</button>
+                <button class="small special" style="float: right" @click="close">关闭</button>
+            </div>
+            <div class="content">
+                <content-inner></content-inner>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -93,66 +93,72 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "../../src/assets/stylus/variables.styl"
+
 .edit {
     //background-color #ff6600
-    height 100%
-    width 100%
-    display flex
+    height: 100%
+    width: 100%
+    display: flex
     //justify-content center
-    align-items stretch
+    align-items: stretch
 
     .sidebar {
-        height 100%
-        width 260px
+        height: 100%
+        width: 260px
         //background-color #ff6699
-        padding-top 10px
-        border-right 1px solid #dddddd
-        position relative
-        overflow-y auto
+        padding-top: 10px
+        border-right: 1px solid #dddddd
+        position: relative
+        overflow-y: auto
 
         &::-webkit-scrollbar {
-            display:none
+            display: none
         }
 
         li {
-            padding-left 10px
+            padding-left: 10px
 
             .title {
-                font-size 1.5rem
-                cursor pointer
-                color #8cd1a8
+                font-size: 1.5rem
+                cursor: pointer
+                color: font-a-color
+
+                &:hover {
+                  color: font-a-hover-color
+                }
             }
 
             .collect {
-                font-size 1.2rem
+                font-size: 1.2rem
             }
 
             .time {
-                font-size 1.2rem
-                color #888
+                font-size: 1.2rem
+                color: #888
             }
         }
     }
 
     .main {
         //height 100%
-        flex-grow 1
-        width calc(100% - 260px)
+        flex-grow: 1
+        width: calc(100% - 260px)
         //background-color #eee
 
         .header {
-            height 42px
+            height: 42px
             //background-color #666666
-            padding 5px
-            border-bottom 1px solid #dddddd
+            padding: 5px
+            border-bottom: 1px solid #dddddd
         }
 
         .content {
-            height calc(100% - 42px)
-            overflow-y auto
+            height: calc(100% - 42px)
+            overflow-y: auto
 
             &::-webkit-scrollbar {
-                display:none
+                display: none
             }
         }
     }

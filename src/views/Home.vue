@@ -17,7 +17,7 @@
             <div class="articles">
                 <div class="article" v-for="article in articles" :key="article.id">
                     <div class="title" @click="linkTo(article.id)"><h4>{{article.title}}</h4></div>
-                    <div class="description">x86架构下，函数执行借助于 hardware stack。为了不同模块函数能在runtime时可以互相调用，程序必须遵守共同的的Calling Convention，这也是ABI的一部分。推荐两本参考资料：x86架构下，函数执行借助于 hardware stack。为了不同模块函数能在runtime时可以互相调用，程序必须遵守共同的的Calling Convention，这也是ABI的一部分。推荐两本参考资料：</div>
+                    <div class="description" v-html="mdToHtml(article.summary)"></div>
                 </div>
             </div>
             <button class="fit special" @click="loadMore" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</button>
@@ -28,66 +28,87 @@
 
 <script>
 import { Article } from '../resource'
+import MarkdownIt from 'markdown-it'
+import hljs from 'highlight.js'
 
 export default {
-  data () {
-    return {
+    data () {
+        return {
 
-    }
-  },
-  computed: {
-    articles() {
-      return this.$store.getters.getArticles
+        }
     },
-    hasMore() {
-      return this.$store.getters.hasArticles
-    }
-  },
-  created() {
+    computed: {
+        articles() {
+            return this.$store.getters.getArticles
+        },
+        hasMore() {
+            return this.$store.getters.hasArticles
+        }
+    },
+    created() {
     //this.fecthDate()
-    if (this.articles.length == 0) {
-      this.fecthDate()
-    } else if (this.$store.state.article.has_update) {
-      this.$store.dispatch('refrash_articles')
-      this.$store.commit('HAS_UPDATE_RESET')
-    }
-  },
-  mounted () {
-    // if (this.$store.getters.hasArticleUpdate) {
-    //   this.fecthDate()
-    //   this.$store.dispatch('has_update_reset')
-    // }
-  },
-  methods: {
-    fecthDate() {
-      this.$store.dispatch('get_articles')
+        if (this.articles.length == 0) {
+            this.fecthDate()
+        } else if (this.$store.state.article.has_update) {
+            this.$store.dispatch('refrash_articles')
+            this.$store.commit('HAS_UPDATE_RESET')
+        }
+
+        let md = new MarkdownIt({
+            highlight: function (str, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    try {
+                        return '<pre class="hljs"><code>' +
+                            hljs.highlight(lang, str, true).value +
+                            '</code></pre>';
+                    } catch (__) {}
+                }
+
+                return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+            }
+        })
+
+        this.md = md
     },
-    loadMore() {
-      this.$store.dispatch('get_articles_more')
+    mounted () {
+        // if (this.$store.getters.hasArticleUpdate) {
+        //   this.fecthDate()
+        //   this.$store.dispatch('has_update_reset')
+        // }
     },
-    linkTo(id) {
-      this.$router.push({name: 'view', params: { id: id}})
-    }
-  },
-  watch: {
-    
-  },
+    methods: {
+        fecthDate() {
+            this.$store.dispatch('get_articles')
+        },
+        loadMore() {
+            this.$store.dispatch('get_articles_more')
+        },
+        linkTo(id) {
+            this.$router.push({name: 'view', params: { id: id}})
+        },
+        mdToHtml(m) {
+            return this.md.render(m)
+        }
+    },
+    watch: {
+
+    },
 }
 </script>
 <style lang="stylus" scoped>
 @import "../../src/assets/stylus/variables.styl"
 
 .home {
-    position: relative;
-    overflow: hidden;
+    position: relative
+    overflow: hidden
 }
 
 .main {
-    margin: 10px auto;
-    max-width: 980px;
+    margin: 10px auto
+    max-width: 980px
 
     .articles {
-        padding-top: 40px;
+        padding-top: 40px
         .article {
             margin-bottom: 40px
             .title h4 {
