@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <section class="main">
-      <!-- <div class="articles">
+<!--       <div class="articles">
         <div class="article" v-for="article in articles" :key="article.id">
           <div class="box" @click="linkTo(article.id)">
             <img v-bind:src="article.img" alt>
