@@ -3,18 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Collect from '@/components/Collect'
-import CollectView from '@/components/CollectView'
-
-import Demo from '@/components/Demo'
-
 import Main from '@/components/layouts/Main'
-
-import Home from '@/views/Home'
-import Edit from '@/views/Edit'
-import View from '@/views/View'
-import Login from '@/views/Login'
-import c404 from '@/views/404'
 
 export default new Router({
   mode: 'history',
@@ -32,42 +21,42 @@ export default new Router({
       children: [{
       	path: '',
         name: 'home',
-      	component: Home
+        component: () => import('@/views/Home')
       },
       {
         path: '/view/:id([a-z0-9]{24})',
         name: 'view',
-        component: View
+        component: () => import('@/views/View')
       },
       {
         path: '/collect',
         name: 'collect',
-        component: Collect
+        component: () => import('@/components/Collect')
       },
       {
         path: '/collect/:id([a-z0-9]{24})',
         name: 'collect_view',
-        component: CollectView
+        component: () => import('@/components/CollectView')
       },
       {
         path: '/demo',
-        component: Demo
+        component: () => import('@/components/Demo')
       }]
     },
     {
       path: '/edit',
       name: 'edit',
-      component: Edit
+      component: () => import('@/views/Edit')
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: () => import('@/views/Login')
     },
     {
       path: '*',
       name: '404',
-      component: c404
+      component: () => import('@/views/404')
     }
   ]
 })

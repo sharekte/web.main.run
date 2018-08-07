@@ -11,6 +11,7 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+import "@/assets/css/font-awesome.min.css"
 import '@/assets/stylus/style.styl'
 
 import '@/assets/css/style.css'
@@ -43,11 +44,8 @@ Vue.http.interceptors.push(function(request, next) {
     })
 })
 
-/* eslint-disable no-new */
-var vue = new Vue({
-  el: '#app',
+new Vue({
   router,
   store,
-  template: '<App/>',
-  components: { App }
-})
+  render: h => h(App)
+}).$mount("#app");
