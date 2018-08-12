@@ -8,13 +8,11 @@
     <div class="header-main">
       <div class="menu">
         <ul>
-          <!-- <li><router-link :to="{ name: 'home' }">首页</router-link></li> -->
-          <li><router-link :to="{ name: 'home' }">文章</router-link></li>
-          <!-- <li><router-link :to="{ name: 'collect' }">专题</router-link></li> -->
-          <!-- <li><router-link :to="{ name: 'home' }">关于</router-link></li> -->
-          <li v-show="isLogin"><router-link :to="{ name: 'edit' }">写作</router-link></li>
-          <li v-if="!isLogin"><router-link :to="{ name: 'login' }">登录</router-link></li>
-          <li v-if="isLogin"><a @click="toLogout">注销</a></li>
+          <li><m-button design="ujarak" size="small" special @click="linkTo('home')">HOME</m-button></li>
+          <li><m-button design="ujarak" size="small" special @click="linkTo('collect')">COLLECTIONS</m-button></li>
+          <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="linkTo('edit')">WRITE</m-button></li>
+          <li v-if="!isLogin"><m-button design="ujarak" size="small" special @click="linkTo('login')">LOGIN</m-button></li>
+          <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="toLogout">LOGOUT</m-button></li>
         </ul>
       </div>
     </div>
@@ -23,57 +21,29 @@
 
 <script>
 export default {
-  computed: {
-    isLogin() {
-      return this.$store.getters.getToken
-    }
-  },
-  methods: {
-    toLogin() {
-      this.$router.push({name: 'login'})
+    computed: {
+        isLogin() {
+            return this.$store.getters.getToken
+        }
     },
-    toLogout() {
-      this.$store.dispatch('logout')
+    methods: {
+        toLogout() {
+            this.$store.dispatch('logout')
+        },
+        linkTo(name) {
+            this.$router.push({name: name})
+        }
     },
-    toNew() {
-      this.$router.push({name: 'new'})
+    mounted () {
+        //console.log(this.$route.name == 'home')
     }
-  },
-  mounted () {
-    //console.log(this.$route.name == 'home')
-  }
 }
 </script>
 
 <style lang="stylus" scoped>
 header {
   border-bottom: 1px solid #F5F5F5;
-}
-  .home-bg {  
-    position: relative;
-    width: 100%;
-    height: 10rem;
-    background-image: url(../../assets/images/home-bg.jpg);
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    z-index: -1;
-
-    .info {
-      position: relative;
-      max-width: 80rem;
-      height: 20rem;
-      -background: #ff6600;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      text-align: center;
-      font-size: 10rem;
-      color: #ffffff;
-    }
-  }
-     
+}   
   .header-main {
     margin: 0 auto;
     height: 6rem;
@@ -91,7 +61,7 @@ header {
         li {
           padding-left: 1rem;
           padding-right: 1rem;
-          font-size: 1.8rem;
+          //font-size: 1.8rem;
         }
       }
     }

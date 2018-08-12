@@ -12,13 +12,13 @@ import store from './store'
 Vue.config.productionTip = false
 
 import "@/assets/css/font-awesome.min.css"
-import '@/assets/stylus/style.styl'
+import "@/assets/stylus/style.styl"
 
-import '@/assets/css/style.css'
-import '@/assets/css/app.css'
-import 'highlight.js/styles/agate.css'
+import UI from "@/ui"
+import "@/ui/style/style.styl";
 
 Vue.use(vueResource)
+Vue.use(UI);
 /*
 Vue.use(Toasted, {
     position: 'top-center',

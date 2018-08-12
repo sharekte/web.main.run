@@ -41,6 +41,9 @@ export default new Router({
       {
         path: '/demo',
         component: () => import('@/components/Demo')
+      }, {
+        path: '/design',
+        component: () => import('@/views/Design')
       }]
     },
     {

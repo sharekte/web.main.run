@@ -450,10 +450,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
           </form>
 
           <button class="aaa">
-            hahaha
+             你好
           </button>
           <button class="bbb">
-            hahaha
+            你好
           </button>
   </div>
 </div>
@@ -485,24 +485,29 @@ export default {
     }
 
 .aaa {
-  box-shadow: inset -1px -1px 0 2px #000000;
+  box-shadow: inset -0 0 0 2px #dddddd;
 }
 .aaa:hover {
-  box-shadow: inset 0 0 0 2px #000000;
-  transform:translate(1px,1px);
+  //box-shadow: inset 0 0 0 2px #dddddd;
+  //transform:translate(1px,1px);
+  background-color: rgba(144,144,144,0.075);
 }
 .aaa:active {
-  box-shadow: inset 0 0 0 1px #000000;
+  box-shadow: inset 0 0 0 1px #dddddd;
 }
 
 .bbb {
-  background-color: #9ed8b6;
-  box-shadow: inset -1px -1px 0 2px #7aca9a;
+  //background-color: #9ed8b6;
+  background-color: #ff9800;
+  //box-shadow: inset 0 0 0 2px #7aca9a;
+  box-shadow: inset 0 0 0 2px #FB8C00;
+  color: #FFFFFF;
 }
 .bbb:hover {
-  box-shadow: inset 0 0 0 2px #7aca9a;
+  //box-shadow: inset 0 0 0 2px #7aca9a;
+  background-color: #fFa726;
 }
 .bbb:active {
-  box-shadow: inset 0 0 0 1px #7aca9a;
+  box-shadow: inset 0 0 0 1px #FB8C00;
 }
 </style>
