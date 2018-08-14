@@ -61,13 +61,28 @@
                 <m-button design="moema" disabled>moema注销</m-button>
             </div>
         </div>
+        <div class="section">
+            <div class="title">
+                Input
+            </div>
+            <h3>default</h3>
+            <m-input v-model="aa"></m-input>{{aa}}
+            <m-input size="small"></m-input>
+            <m-input size="big"></m-input>
+            <m-input disabled></m-input>
+            <h3>Haruki</h3>
+        </div>
     </div>
 </template>
 
 <script>
 
 export default {
-  
+    data () {
+        return {
+            aa: 'a'
+        }
+    }
 }
 </script>
 <style lang="stylus" scoped>

@@ -2,7 +2,9 @@
   <div class="main">
     <headers></headers>
     <!-- <keep-alive> -->
-    <router-view></router-view>
+    <div class="content">
+        <router-view></router-view>
+    </div>
     <!-- </keep-alive> -->
     <footers></footers>
   </div>
@@ -20,8 +22,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 .main {
-  position: relative
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .content {
+        flex: 1 0 auto;
+    }
 }
 </style>

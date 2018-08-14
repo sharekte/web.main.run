@@ -42,28 +42,29 @@ export default {
 
 <style lang="stylus" scoped>
 header {
-  border-bottom: 1px solid #F5F5F5;
-}   
-  .header-main {
-    margin: 0 auto;
-    height: 6rem;
-    max-width: 120rem;
-    
-    .menu {
-      height: 10rem;
-      line-height: 6rem;
-      
-      ul {
-        display: flex;
-        justify-content: center;
-        list-style: none;
-        
-        li {
-          padding-left: 1rem;
-          padding-right: 1rem;
-          //font-size: 1.8rem;
+    border-bottom: 1px solid #F5F5F5;
+    flex: 0 0 auto;
+
+    .header-main {
+        margin: 0 auto;
+        height: 6rem;
+        max-width: 120rem;
+
+        .menu {
+            height: 10rem;
+            line-height: 6rem;
+
+            ul {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                
+                li {
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+            }
         }
-      }
     }
-  }
+}
 </style>

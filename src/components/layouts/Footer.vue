@@ -16,18 +16,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 footer {
-  margin-top: 50px;
-  border-top: 1px solid #F5F5F5;
+    margin-top: 50px;
+    border-top: 1px solid #F5F5F5;
+    flex: 0 0 auto;
+
+    .footer-main {
+        /*height: 100px;*/
+        line-height: 100px;
+        text-align: center;
+        color: #B9B9B9;
+        font-size: 1.3rem;
+        background: #33363B;
+        border-top: 4px solid #494c54;
+    }
 }
-  .footer-main {
-    /*height: 100px;*/
-    line-height: 100px;
-    text-align: center;
-    color: #B9B9B9;
-    font-size: 1.3rem;
-    background: #33363B;
-    border-top: 4px solid #494c54;
-  }
 </style>

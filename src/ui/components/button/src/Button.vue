@@ -106,9 +106,6 @@
             icon: String
         },
         computed: {
-            // buttonDisabled() {
-            //     return this.disabled
-            // }
             buttonSize() {
                 return this.size
             }

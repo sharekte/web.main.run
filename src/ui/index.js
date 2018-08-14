@@ -1,7 +1,9 @@
 import MButton from "./components/button/index.js";
+import MInput from "./components/input/index.js";
 
 const components = [
-    MButton
+    MButton,
+    MInput
 ];
 
 const install = function(Vue) {
@@ -11,7 +13,6 @@ const install = function(Vue) {
 };
 
 if (typeof window !== "undefined" && window.Vue) {
-    console('aaa')
     install(window.Vue);
 }
 
@@ -23,5 +24,6 @@ if (typeof window !== "undefined" && window.Vue) {
 //module.exports.default = module.exports;
 export default {
     install,
-    MButton
+    MButton,
+    MInput
 };
