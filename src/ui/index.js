@@ -1,19 +1,16 @@
 import MButton from "./components/button/index.js";
 import MInput from "./components/input/index.js";
 
-const components = [
-    MButton,
-    MInput
-];
+const components = [MButton, MInput];
 
 const install = function(Vue) {
-    components.forEach(component => {
-        Vue.component(component.name, component);
-    });
+  components.forEach(component => {
+    Vue.component(component.name, component);
+  });
 };
 
 if (typeof window !== "undefined" && window.Vue) {
-    install(window.Vue);
+  install(window.Vue);
 }
 
 // module.exports = {
@@ -23,7 +20,7 @@ if (typeof window !== "undefined" && window.Vue) {
 
 //module.exports.default = module.exports;
 export default {
-    install,
-    MButton,
-    MInput
+  install,
+  MButton,
+  MInput
 };

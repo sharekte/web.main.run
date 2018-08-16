@@ -1,155 +1,164 @@
-import { SET_ARTICLES, PUSH_ARTICLES, ADD_PAGE, SET_COUNT, HAS_MORE, SET_ARTICLE,
- SET_CURRENT_ARTICLE_ID, HAS_UPDATE, HAS_UPDATE_RESET} from '../mutation-types'
-import { Article } from '@/resource'
+import {
+  SET_ARTICLES,
+  PUSH_ARTICLES,
+  ADD_PAGE,
+  SET_COUNT,
+  HAS_MORE,
+  SET_ARTICLE,
+  SET_CURRENT_ARTICLE_ID,
+  HAS_UPDATE,
+  HAS_UPDATE_RESET
+} from "../mutation-types";
+import { Article } from "@/resource";
 
-const RESRESH_ADTICLES = 'RESRESH_ADTICLES'
+const RESRESH_ADTICLES = "RESRESH_ADTICLES";
 
 const state = {
-    articles: [],
-    page: 1,
-    count: 0,
-    hasMore: true,
+  articles: [],
+  page: 1,
+  count: 0,
+  hasMore: true,
 
-    article: {},
+  article: {},
 
-    currentArticleId: '',
+  currentArticleId: "",
 
-    pic_next: 1,
+  pic_next: 1,
 
-    has_update: false
-}
+  has_update: false
+};
 
 const getters = {
-    getArticles: (state) => {
-        return state.articles
-    },
-    hasArticles: (state) => {
-        return state.hasMore
-    },
-    getArticle: (state) => {
-        return state.article
-    },
-    getCurrentArticleId: (state) => {
-        return state.currentArticleId
-    },
-    hasArticleUpdate: (state) => {
-        return state.has_update
-    }
-}
+  getArticles: state => {
+    return state.articles;
+  },
+  hasArticles: state => {
+    return state.hasMore;
+  },
+  getArticle: state => {
+    return state.article;
+  },
+  getCurrentArticleId: state => {
+    return state.currentArticleId;
+  },
+  hasArticleUpdate: state => {
+    return state.has_update;
+  }
+};
 
 const actions = {
-    get_articles ({commit, state}) {
-        Article.get({page: 1, per_page: 12}).then(response => {
-            if (response.body.success) {
-                commit('SET_ARTICLES', response.body.data.articles)
-                commit('SET_COUNT', response.body.data.count)
-                commit('ADD_PAGE')
-            }
-        })
-    },
-    get_articles_more ({commit, state}) {
-        Article.get({page: state.page, per_page: 12}).then(response => {
-            if (response.body.success) {
-                commit('PUSH_ARTICLES', response.body.data.articles)
-                commit('SET_COUNT', response.body.data.count)
-                commit('ADD_PAGE')
-            }
-        })
-    },
-    refrash_articles({commit, state}) {
-        Article.get({ page: 1, per_page: state.articles.length}).then(response => {
-            if (response.body.success) {
-                commit('RESRESH_ADTICLES', response.body.data.articles)
-            }
-        })
-    },
-    get_article ({commit, state}, params) {
-        Article.get({id: params.id}).then(response => {
-            if (response.body.success) {
-                commit('SET_ARTICLE', response.body.data)
-            }
-        })
-    },
-    has_update_reset ({commit, state}) {
-        commit('HAS_UPDATE_RESET')
-    }
-}
+  get_articles({ commit, state }) {
+    Article.get({ page: 1, per_page: 12 }).then(response => {
+      if (response.body.success) {
+        commit("SET_ARTICLES", response.body.data.articles);
+        commit("SET_COUNT", response.body.data.count);
+        commit("ADD_PAGE");
+      }
+    });
+  },
+  get_articles_more({ commit, state }) {
+    Article.get({ page: state.page, per_page: 12 }).then(response => {
+      if (response.body.success) {
+        commit("PUSH_ARTICLES", response.body.data.articles);
+        commit("SET_COUNT", response.body.data.count);
+        commit("ADD_PAGE");
+      }
+    });
+  },
+  refrash_articles({ commit, state }) {
+    Article.get({ page: 1, per_page: state.articles.length }).then(response => {
+      if (response.body.success) {
+        commit("RESRESH_ADTICLES", response.body.data.articles);
+      }
+    });
+  },
+  get_article({ commit, state }, params) {
+    Article.get({ id: params.id }).then(response => {
+      if (response.body.success) {
+        commit("SET_ARTICLE", response.body.data);
+      }
+    });
+  },
+  has_update_reset({ commit, state }) {
+    commit("HAS_UPDATE_RESET");
+  }
+};
 
 const mutations = {
-    [SET_ARTICLES] (state, articles) {
-        // refrash
-        state.pic_next = 1
-        state.page = 1
-        state.count = 0
-        state.hasMore = true
+  [SET_ARTICLES](state, articles) {
+    // refrash
+    state.pic_next = 1;
+    state.page = 1;
+    state.count = 0;
+    state.hasMore = true;
 
-        articles.forEach(function(value, index, array) {
-            value.img = 'https://cdn1.01io.com/temp/' + state.pic_next + '.png'
-            state.pic_next += 1
-            if (state.pic_next > 12 ) {
-                state.pic_next = 1
-            }
-        })
+    articles.forEach(function(value, index, array) {
+      value.img = "https://cdn1.01io.com/temp/" + state.pic_next + ".png";
+      state.pic_next += 1;
+      if (state.pic_next > 12) {
+        state.pic_next = 1;
+      }
+    });
 
-        state.articles = articles
-    },
+    state.articles = articles;
+  },
 
-    [PUSH_ARTICLES] (state, articles) {
-        articles.forEach(function(value, index, array) {
-            value.img = 'https://cdn1.01io.com/temp/' + state.pic_next + '.png'
-            state.pic_next += 1
-            if (state.pic_next > 12 ) {
-                state.pic_next = 1
-            }
-        })
+  [PUSH_ARTICLES](state, articles) {
+    articles.forEach(function(value, index, array) {
+      value.img = "https://cdn1.01io.com/temp/" + state.pic_next + ".png";
+      state.pic_next += 1;
+      if (state.pic_next > 12) {
+        state.pic_next = 1;
+      }
+    });
 
-        state.articles.push(...articles)
-    },
+    state.articles.push(...articles);
+  },
 
-    [ADD_PAGE] (state) {
-        state.page += 1
-    },
+  [ADD_PAGE](state) {
+    state.page += 1;
+  },
 
-    [SET_COUNT] (state, count) {
-        state.count = count
+  [SET_COUNT](state, count) {
+    state.count = count;
 
-        if ((state.articles.length == state.count) && state.count != 0) {
-            state.hasMore = false
-        }
-    },
-
-    [SET_ARTICLE] (state, article) {
-        state.article = article
-    },
-
-    [SET_CURRENT_ARTICLE_ID] (state, id) {
-        state.currentArticleId = id
-    },
-
-    [HAS_UPDATE] (state) {
-        state.has_update = true
-    },
-
-    [HAS_UPDATE_RESET] (state) {
-        state.has_update = false
-    },
-
-    [RESRESH_ADTICLES] (state, articles) {
-        state.articles = articles
-
-        articles.forEach(function (value, index, array) {
-            value.img = 'https://cdn1.01io.com/temp/' + state.pic_next + '.png'
-            state.pic_next += 1
-            if (state.pic_next > 12) {
-                state.pic_next = 1
-            }
-        })
+    if (state.articles.length == state.count && state.count != 0) {
+      state.hasMore = false;
     }
-}
+  },
+
+  [SET_ARTICLE](state, article) {
+    state.article = article;
+  },
+
+  [SET_CURRENT_ARTICLE_ID](state, id) {
+    state.currentArticleId = id;
+  },
+
+  [HAS_UPDATE](state) {
+    state.has_update = true;
+  },
+
+  [HAS_UPDATE_RESET](state) {
+    state.has_update = false;
+  },
+
+  [RESRESH_ADTICLES](state, articles) {
+    state.articles = articles;
+
+    articles.forEach(function(value, index, array) {
+      value.img = "https://cdn1.01io.com/temp/" + state.pic_next + ".png";
+      state.pic_next += 1;
+      if (state.pic_next > 12) {
+        state.pic_next = 1;
+      }
+    });
+  }
+};
 
 export default {
-    state,
-    getters,
-    actions,
-    mutations
-}
+  state,
+  getters,
+  actions,
+  mutations
+};

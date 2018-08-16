@@ -1,6 +1,7 @@
 <template>
     <button v-if="design == 'default'"
         class="m-button-default"
+        ref="button"
         @click="handleClick"
         :disabled="disabled"
         :class="[
@@ -16,7 +17,8 @@
     </button>
 
     <button v-else-if="design == 'winona'"
-        class="m-button-common-1 button--winona"
+        class="m-button-common-1 m-button--winona"
+        ref="button"
         :data-text="$slots.default ? $slots.default[0].text : ''"
         @click="handleClick"
         :disabled="disabled"
@@ -31,7 +33,8 @@
     </button>
 
     <button v-else-if="design == 'ujarak'"
-        class="m-button-common-1 button--ujarak"
+        class="m-button-common-1 m-button--ujarak"
+        ref="button"
         :data-text="$slots.default ? $slots.default[0].text : ''"
         @click="handleClick"
         :disabled="disabled"
@@ -46,7 +49,8 @@
     </button>
 
     <button v-else-if="design == 'wayra'"
-        class="m-button-common-2 button--wayra"
+        class="m-button-common-2 m-button--wayra"
+        ref="button"
         @click="handleClick"
         :disabled="disabled"
         :class="[
@@ -60,7 +64,8 @@
     </button>
 
     <button v-else-if="design == 'rayen'"
-        class="m-button-common-2 button--rayen"
+        class="m-button-common-2 m-button--rayen"
+        ref="button"
         @click="handleClick"
         :disabled="disabled"
         :class="[
@@ -74,7 +79,8 @@
     </button>
 
     <button v-else-if="design == 'moema'"
-        class="m-button-common-2 button--moema"
+        class="m-button-common-2 m-button--moema"
+        ref="button"
         @click="handleClick"
         :disabled="disabled"
         :class="[

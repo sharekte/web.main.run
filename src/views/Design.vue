@@ -71,6 +71,7 @@
             <m-input size="big"></m-input>
             <m-input disabled></m-input>
             <h3>Haruki</h3>
+            <m-input design="haruki"></m-input>
         </div>
     </div>
 </template>
