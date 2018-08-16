@@ -54,51 +54,50 @@
     //width: calc(100% - 2em);
     width: 100%;
     vertical-align: top;
-    
-    .m-input__field {
-        position: relative;
-        display: block;
-        float: right;
-        padding: 0.8rem;
-        width: 60%;
-        border: none;
-        border-radius: 0;
-        background: #f0f0f0;
-        //color: #aaa;
-        font-weight: bold;
-        //font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        -webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.m-input__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8rem;
+    width: 60%;
+    border: none;
+    border-radius: 0;
+    background: #f0f0f0;
+    //color: #aaa;
+    font-weight: bold;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
         
-        &:focus {
-            outline: none;
-        }
-    }
-    
-    .m-input__label {
-        display: inline-block;
-        float: right;
-        padding: 0 1rem;
-        width: 40%;
-        //color: #6a7989;
-        font-weight: bold;
-        //font-size: 70.25%;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        
-        .m-input__label-content {
-            position: relative;
-            display: block;
-            padding: 1.6rem 0;
-            width: 100%;
-        }
+    &:focus {
+        outline: none;
     }
 }
 
-/* haruki */
+.m-input__label {
+    display: inline-block;
+    float: right;
+    padding: 0 1rem;
+    width: 40%;
+    //color: #6a7989;
+    font-weight: bold;
+    //font-size: 70.25%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+        
+    .m-input__label-content {
+        position: relative;
+        display: block;
+        padding: 1.6rem 0;
+        width: 100%;
+    }
+}
+
+/* Haruki */
 .m-input--haruki {
     //margin: 4em 1em 1em;
     
@@ -157,4 +156,78 @@
 .m-input__field--haruki:focus + .m-input__label--haruki::after,
 .m-input--filled .m-input__label--haruki::after {
     transform: translate3d(0, 0.4rem, 0);
+}
+
+/* Yoko */
+
+.m-input__field--yoko {
+    z-index: 10;
+    width: 100%;
+    background: transparent;
+    color: #f5f5f5;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.m-input__label--yoko {
+    position: relative;
+    width: 100%;
+    color: #fcad26;
+    text-align: left;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        height: 4.4rem;
+        background: #fcad26;
+        -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+    }
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0.2rem;
+        background: #fcad26;
+        -webkit-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
+        -webkit-transition: -webkit-transform 0.3s;
+        transition: transform 0.3s;
+    }
+    
+    .m-input__label-content--yoko {
+        padding: 0.75rem 0;
+    }
+}
+
+.m-input__field--yoko:focus,
+.m-input--filled .m-input__field--yoko {
+    opacity: 1;
+    transition-delay: 0.3s;
+}
+
+.m-input__field--yoko:focus + .m-input__label--yoko::before,
+.m-input--filled .m-input__label--yoko::before {
+    transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
+}
+
+.m-input__field--yoko:focus + .m-input__label--yoko,
+.m-input--filled .m-input__label--yoko {
+    pointer-events: none;
+}
+
+.m-input__field--yoko:focus + .m-input__label--yoko::after,
+.m-input--filled .m-input__label--yoko::after {
+    transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
 }

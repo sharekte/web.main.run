@@ -72,6 +72,8 @@
             <m-input disabled></m-input>
             <h3>Haruki</h3>
             <m-input design="haruki"></m-input>
+            <h3>Yoko</h3>
+            <m-input design="yoko"></m-input>
         </div>
     </div>
 </template>
