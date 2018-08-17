@@ -1,20 +1,17 @@
 <template>
-  <div class="home">
-    <!-- <div class="home-bg"> -->
-     <!--  <div class="slant-left"></div>
+    <div class="home">
+        <!-- <div class="home-bg"> -->
+        <!--  <div class="slant-left"></div>
       <div class="slant-right"></div> -->
-      <div class="info">
-        404
-      </div>
+        <div class="info">
+            404
+        </div>
     <!-- </div> -->
-  </div>
+    </div>
 </template>
 
 <script>
-
-export default {
-  
-}
+export default {};
 </script>
 <style lang="stylus" scoped>
 .home {

@@ -14,81 +14,86 @@
     </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import CodeMirror from '@/components/edit/CodeMirror'
-import MarkdownIt from 'markdown-it'
-import hljs from 'highlight.js'
+import { mapState } from "vuex";
+import CodeMirror from "@/components/edit/CodeMirror";
+import MarkdownIt from "markdown-it";
+import hljs from "highlight.js";
 
-require('codemirror/keymap/sublime.js')
-import '@/assets/css/paraiso-light2.css'
+require("codemirror/keymap/sublime.js");
+import "@/assets/css/paraiso-light2.css";
 
 export default {
-    components: {
-        CodeMirror
+  components: {
+    CodeMirror
+  },
+  data() {
+    return {
+      code: "",
+      html: "",
+      editorOption: {
+        tabSize: 4,
+        styleActiveLine: true,
+        lineNumbers: true,
+        line: true,
+        mode: "text/x-markdown",
+        theme: "paraiso-light2",
+        lineWrapping: true,
+        keyMap: "sublime",
+        highlightFormatting: true
+      }
+    };
+  },
+  watch: {
+    code(val, old_val) {
+      this.html = this.md.render(val);
+      this.$store.commit("EDIT_UPDATE_CONTENT", val);
     },
-    data() {
-        return {
-            code: '',
-            html: '',
-            editorOption: {
-                tabSize: 4,
-                styleActiveLine: true,
-                lineNumbers: true,
-                line: true,
-                mode: 'text/x-markdown',
-                theme: 'paraiso-light2',
-                lineWrapping: true,
-                keyMap: "sublime",
-                highlightFormatting: true,
-            },
+    articleId(val, old_val) {
+      if (val !== undefined && val !== "") {
+        this.$store.dispatch("edit_get_article", val);
+      }
+    },
+    articleContent(val, old_val) {
+      this.code = val;
+    }
+  },
+  created() {
+    let md = new MarkdownIt({
+      highlight: function(str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return (
+              '<pre class="hljs"><code>' +
+              hljs.highlight(lang, str, true).value +
+              "</code></pre>"
+            );
+          } catch (__) {}
         }
-    },
-    watch: {
-        code(val, old_val) {
-            this.html = this.md.render(val)
-            this.$store.commit('EDIT_UPDATE_CONTENT', val)
 
-        },
-        articleId(val, old_val) {
-            if (val !== undefined && val !== '') {
-                this.$store.dispatch('edit_get_article', val)
-            }
-        },
-        articleContent(val, old_val) {
-            this.code = val
-        }
-    },
-    created() {
-        let md = new MarkdownIt({
-            highlight: function (str, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    try {
-                        return '<pre class="hljs"><code>' +
-                            hljs.highlight(lang, str, true).value +
-                            '</code></pre>';
-                    } catch (__) {}
-                }
+        return (
+          '<pre class="hljs"><code>' +
+          md.utils.escapeHtml(str) +
+          "</code></pre>"
+        );
+      }
+    });
 
-                return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-            }
-        })
-
-        this.md = md
+    this.md = md;
+  },
+  methods: {
+    refresh(editor) {
+      editor.refresh();
     },
-    methods: {
-        refresh (editor) {
-            editor.refresh()
-        },
-        updateTitle (e) {
-            this.$store.commit('EDIT_UPDATE_TITLE', e.target.value)
-        }
-    },
-    computed: mapState({
-        article: state => state.edit.article,
-        articleId: state => state.edit.article.id,
-        articleContent: state => state.edit.article.content
-    })
-}
+    updateTitle(e) {
+      this.$store.commit("EDIT_UPDATE_TITLE", e.target.value);
+    }
+  },
+  computed: mapState({
+    article: state => state.edit.article,
+    articleId: state => state.edit.article.id,
+    articleContent: state => state.edit.article.content
+  })
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -127,4 +132,3 @@ export default {
     }
 }
 </style>
-

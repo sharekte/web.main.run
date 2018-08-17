@@ -27,73 +27,75 @@
 </template>
 
 <script>
-import { Article } from '../resource'
-import MarkdownIt from 'markdown-it'
-import hljs from 'highlight.js'
+import { Article } from "../resource";
+import MarkdownIt from "markdown-it";
+import hljs from "highlight.js";
 
 export default {
-    data () {
-        return {
-
-        }
+  data() {
+    return {};
+  },
+  computed: {
+    articles() {
+      return this.$store.getters.getArticles;
     },
-    computed: {
-        articles() {
-            return this.$store.getters.getArticles
-        },
-        hasMore() {
-            return this.$store.getters.hasArticles
-        }
-    },
-    created() {
+    hasMore() {
+      return this.$store.getters.hasArticles;
+    }
+  },
+  created() {
     //this.fecthDate()
-        if (this.articles.length == 0) {
-            this.fecthDate()
-        } else if (this.$store.state.article.has_update) {
-            this.$store.dispatch('refrash_articles')
-            this.$store.commit('HAS_UPDATE_RESET')
+    if (this.articles.length == 0) {
+      this.fecthDate();
+    } else if (this.$store.state.article.has_update) {
+      this.$store.dispatch("refrash_articles");
+      this.$store.commit("HAS_UPDATE_RESET");
+    }
+
+    let md = new MarkdownIt({
+      highlight: function(str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return (
+              '<pre class="hljs"><code>' +
+              hljs.highlight(lang, str, true).value +
+              "</code></pre>"
+            );
+          } catch (__) {}
         }
 
-        let md = new MarkdownIt({
-            highlight: function (str, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    try {
-                        return '<pre class="hljs"><code>' +
-                            hljs.highlight(lang, str, true).value +
-                            '</code></pre>';
-                    } catch (__) {}
-                }
+        return (
+          '<pre class="hljs"><code>' +
+          md.utils.escapeHtml(str) +
+          "</code></pre>"
+        );
+      }
+    });
 
-                return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-            }
-        })
-
-        this.md = md
+    this.md = md;
+  },
+  mounted() {
+    // if (this.$store.getters.hasArticleUpdate) {
+    //   this.fecthDate()
+    //   this.$store.dispatch('has_update_reset')
+    // }
+  },
+  methods: {
+    fecthDate() {
+      this.$store.dispatch("get_articles");
     },
-    mounted () {
-        // if (this.$store.getters.hasArticleUpdate) {
-        //   this.fecthDate()
-        //   this.$store.dispatch('has_update_reset')
-        // }
+    loadMore() {
+      this.$store.dispatch("get_articles_more");
     },
-    methods: {
-        fecthDate() {
-            this.$store.dispatch('get_articles')
-        },
-        loadMore() {
-            this.$store.dispatch('get_articles_more')
-        },
-        linkTo(id) {
-            this.$router.push({name: 'view', params: { id: id}})
-        },
-        mdToHtml(m) {
-            return this.md.render(m)
-        }
+    linkTo(id) {
+      this.$router.push({ name: "view", params: { id: id } });
     },
-    watch: {
-
-    },
-}
+    mdToHtml(m) {
+      return this.md.render(m);
+    }
+  },
+  watch: {}
+};
 </script>
 <style lang="stylus" scoped>
 @import "../../src/ui/style/variables.styl"

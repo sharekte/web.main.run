@@ -1,25 +1,25 @@
 <template>
-  <div class="main">
-    <headers></headers>
-    <!-- <keep-alive> -->
-    <div class="content">
-        <router-view></router-view>
+    <div class="main">
+        <headers></headers>
+        <!-- <keep-alive> -->
+        <div class="content">
+            <router-view></router-view>
+        </div>
+        <!-- </keep-alive> -->
+        <footers></footers>
     </div>
-    <!-- </keep-alive> -->
-    <footers></footers>
-  </div>
 </template>
 
 <script>
-import Headers from '@/components/layouts/Header'
-import Footers from '@/components/layouts/Footer'
+import Headers from "@/components/layouts/Header";
+import Footers from "@/components/layouts/Footer";
 
 export default {
   components: {
     Headers,
     Footers
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

@@ -1,43 +1,43 @@
 <template>
-  <header>
-    <!-- <div class="home-bg">
+    <header>
+        <!-- <div class="home-bg">
       <div class="info">
 
       </div>
     </div> -->
-    <div class="header-main">
-      <div class="menu">
-        <ul>
-          <li><m-button design="ujarak" size="small" special @click="linkTo('home')">HOME</m-button></li>
-          <li><m-button design="ujarak" size="small" special @click="linkTo('collect')">COLLECTIONS</m-button></li>
-          <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="linkTo('edit')">WRITE</m-button></li>
-          <li v-if="!isLogin"><m-button design="ujarak" size="small" special @click="linkTo('login')">LOGIN</m-button></li>
-          <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="toLogout">LOGOUT</m-button></li>
-        </ul>
-      </div>
-    </div>
-  </header>
+        <div class="header-main">
+            <div class="menu">
+                <ul>
+                    <li><m-button design="ujarak" size="small" special @click="linkTo('home')">HOME</m-button></li>
+                    <li><m-button design="ujarak" size="small" special @click="linkTo('collect')">COLLECTIONS</m-button></li>
+                    <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="linkTo('edit')">WRITE</m-button></li>
+                    <li v-if="!isLogin"><m-button design="ujarak" size="small" special @click="linkTo('login')">LOGIN</m-button></li>
+                    <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="toLogout">LOGOUT</m-button></li>
+                </ul>
+            </div>
+        </div>
+    </header>
 </template>
 
 <script>
 export default {
-    computed: {
-        isLogin() {
-            return this.$store.getters.getToken
-        }
-    },
-    methods: {
-        toLogout() {
-            this.$store.dispatch('logout')
-        },
-        linkTo(name) {
-            this.$router.push({name: name})
-        }
-    },
-    mounted () {
-        //console.log(this.$route.name == 'home')
+  computed: {
+    isLogin() {
+      return this.$store.getters.getToken;
     }
-}
+  },
+  methods: {
+    toLogout() {
+      this.$store.dispatch("logout");
+    },
+    linkTo(name) {
+      this.$router.push({ name: name });
+    }
+  },
+  mounted() {
+    //console.log(this.$route.name == 'home')
+  }
+};
 </script>
 
 <style lang="stylus" scoped>

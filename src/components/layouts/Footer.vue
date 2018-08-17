@@ -1,19 +1,19 @@
 <template>
-  <footer>
-    <div class="footer-main">
-      Copyright © 2017 - 2018 MAIN.RUN . All rights reserved
-    </div>
-  </footer>
+    <footer>
+        <div class="footer-main">
+            Copyright © 2017 - 2018 MAIN.RUN . All rights reserved
+        </div>
+    </footer>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      msg: "Welcome to Your Vue.js App"
+    };
   }
-}
+};
 </script>
 
 <style lang="stylus" scoped>

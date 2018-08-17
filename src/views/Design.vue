@@ -71,22 +71,29 @@
             <m-input size="big"></m-input>
             <m-input disabled></m-input>
             <h3>Haruki</h3>
+            <div style="margin-top: 50px;"></div>
             <m-input design="haruki"></m-input>
             <h3>Yoko</h3>
+            <div style="margin-top: 50px;"></div>
             <m-input design="yoko"></m-input>
+            <h3>Ichiro</h3>
+            <div style="margin-top: 50px;"></div>
+            <m-input design="ichiro"></m-input>
+            <h3>Juro</h3>
+            <div style="margin-top: 50px;"></div>
+            <m-input design="juro"></m-input>
         </div>
     </div>
 </template>
 
 <script>
-
 export default {
-    data () {
-        return {
-            aa: 'a'
-        }
-    }
-}
+  data() {
+    return {
+      aa: "a"
+    };
+  }
+};
 </script>
 <style lang="stylus" scoped>
 .main {

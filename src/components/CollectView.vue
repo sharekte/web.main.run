@@ -1,105 +1,109 @@
 <template>
-  <div class="home">
-    <section class="main">
-      <div class="top">
-        <div class="button" @click="update_show">修改</div>
-        <!-- <div class="button">删除</div> -->
+    <div class="home">
+        <section class="main">
+            <div class="top">
+                <div class="button" @click="update_show">修改</div>
+                <!-- <div class="button">删除</div> -->
 
-        <div class="edit" v-show="edit_show">
-          <div class="name">
-            <input type="text" name="name" id="name" placeholder="name" v-model="name"/>
-          </div>
-          <div class="description">
-            <textarea name="message" id="description" placeholder="description" rows="2" v-model="description"></textarea>
-          </div>
-          <div class="submit" v-show="editSubmitShow">
-              <input type="submit" value="submit" class="special fit" @click="editSubmit"/>
-          </div>
+                <div class="edit" v-show="edit_show">
+                    <div class="name">
+                        <input type="text" name="name" id="name" placeholder="name" v-model="name"/>
+                    </div>
+                    <div class="description">
+                        <textarea name="message" id="description" placeholder="description" rows="2" v-model="description"></textarea>
+                    </div>
+                    <div class="submit" v-show="editSubmitShow">
+                        <input type="submit" value="submit" class="special fit" @click="editSubmit"/>
+                    </div>
 
-        </div>
-      </div>
-      <div class="detail">
-        <div class="name">{{collect.name}}</div>
-        <div class="description">{{collect.description}}</div>
-      </div>
-      <div class="lable">文章</div>
-      <div class="articles">
-        <div class="item" v-for="article in articles">
-          <div class="title" @click="option_article(article.id)">{{article.title}}</div>
-          <div class="summary">{{article.summary}}</div>
-        </div>
-      </div>
-    </section>
-  </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="name">{{collect.name}}</div>
+                <div class="description">{{collect.description}}</div>
+            </div>
+            <div class="lable">文章</div>
+            <div class="articles">
+                <div class="item" v-for="article in articles">
+                    <div class="title" @click="option_article(article.id)">{{article.title}}</div>
+                    <div class="summary">{{article.summary}}</div>
+                </div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>
-import { Collect } from '../resource'
+import { Collect } from "../resource";
 
 export default {
-  data () {
+  data() {
     return {
-      edit_show: false,
+      edit_show: false
       // name: '',
       // description: ''
-    }
+    };
   },
   computed: {
     collect() {
-      return this.$store.getters.getCollect
+      return this.$store.getters.getCollect;
     },
     name: {
       //return this.collect.name
-      get () {
-        return this.collect.name
+      get() {
+        return this.collect.name;
       },
-      set (value) {
-        this.$store.commit('SET_COLLECT_NAME', value)
+      set(value) {
+        this.$store.commit("SET_COLLECT_NAME", value);
       }
     },
     description: {
       //return this.collect.description
-      get () {
-        return this.collect.description
+      get() {
+        return this.collect.description;
       },
-      set (value) {
-        this.$store.commit('SET_COLLECT_DESCRIPTION', value)
+      set(value) {
+        this.$store.commit("SET_COLLECT_DESCRIPTION", value);
       }
     },
     editSubmitShow() {
       if (this.name != "" && this.description != "") {
-        return true
+        return true;
       }
     },
     currentArticleId() {
-      return this.$store.getters.getCurrentCollectId
+      return this.$store.getters.getCurrentCollectId;
     },
     articles() {
-      return this.$store.state.collect.articles
+      return this.$store.state.collect.articles;
     }
   },
   created() {
-    this.fecthDate()
+    this.fecthDate();
   },
-  mounted () {
+  mounted() {
     //console.log(this.articles)
   },
   methods: {
     fecthDate() {
-      this.$store.dispatch('get_collect', this.$route.params)
-      this.$store.dispatch('get_articles_by_collect', this.$route.params)
+      this.$store.dispatch("get_collect", this.$route.params);
+      this.$store.dispatch("get_articles_by_collect", this.$route.params);
     },
     editSubmit() {
       if (this.name != "" && this.description != "") {
-        this.$store.dispatch('update_collect', {name: this.name, description: this.description, image: []})
-        this.edit_show = false
+        this.$store.dispatch("update_collect", {
+          name: this.name,
+          description: this.description,
+          image: []
+        });
+        this.edit_show = false;
       }
     },
     update_show() {
-      this.edit_show = true
+      this.edit_show = true;
     },
     option_article(id) {
-      this.$router.push({name: 'view', params: { id: id}})
+      this.$router.push({ name: "view", params: { id: id } });
     }
   },
   watch: {
@@ -108,7 +112,7 @@ export default {
       //this.edit_show = false
     }
   }
-}
+};
 </script>
 <style lang="stylus" scoped>
 .home {
