@@ -40,10 +40,11 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/html-indent": [
+      "indent": [
         "error",
         4
-      ]
+      ],
+      "vue/script-indent": "error"
     }
   },
   "postcss": {

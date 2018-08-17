@@ -158,48 +158,48 @@ var htmldiff = {
       switch (f) {
         case this.MODE_CHARACTER:
           if (this.IsStartOfTag(c)) {
-            if (e) d.push(e);
-            e = "<";
-            f = this.MODE_TAG;
-          } else {
-            if (this.IsWhiteSpace(c)) {
-              if (e) d.push(e);
-              e = c;
+          if (e) d.push(e);
+          e = "<";
+          f = this.MODE_TAG;
+        } else {
+          if (this.IsWhiteSpace(c)) {
+                        if (e) d.push(e);
+            e = c;
               f = this.MODE_WHITESPACE;
-            } else {
-              //console.log(e );
-              if (this.isNaW(e + c)) {
-                if (e) d.push(e);
-                e = c;
-              } else e = e + c;
-            }
-          }
-          break;
-        case this.MODE_TAG:
-          if (this.IsEndOfTag(c)) {
-            e = e + ">";
-            d.push(e);
-            e = "";
-            if (this.IsWhiteSpace(c)) f = this.MODE_WHITESPACE;
-            else f = this.MODE_CHARACTER;
-          } else e = e + c;
-          break;
-        case this.MODE_WHITESPACE:
-          if (this.IsStartOfTag(c)) {
-            if (e) d.push(e);
-            e = "<";
-            f = this.MODE_TAG;
           } else {
-            if (this.IsWhiteSpace(c)) e = e + c;
-            else {
+            //console.log(e );
+                        if (this.isNaW(e + c)) {
               if (e) d.push(e);
-              e = c;
+                            e = c;
+            } else e = e + c;
+                    }
+        }
+        break;
+        case this.MODE_TAG:
+        if (this.IsEndOfTag(c)) {
+            e = e + ">";
+                    d.push(e);
+                    e = "";
+                    if (this.IsWhiteSpace(c)) f = this.MODE_WHITESPACE;
+                    else f = this.MODE_CHARACTER;
+                } else e = e + c;
+          break;
+      case this.MODE_WHITESPACE:
+          if (this.IsStartOfTag(c)) {
+                    if (e) d.push(e);
+            e = "<";
+                    f = this.MODE_TAG;
+        } else {
+                    if (this.IsWhiteSpace(c)) e = e + c;
+                    else {
+            if (e) d.push(e);
+            e = c;
               f = this.MODE_CHARACTER;
-            }
-          }
-          break;
+                    }
+        }
+                break;
         default:
-          break;
+                break;
       }
     }
     if (e) d.push(e);
@@ -208,21 +208,21 @@ var htmldiff = {
   PerformOperation: function(a) {
     switch (a.Action) {
       case this.ACTION_EQUAL:
-        this.ProcessEqualOperation(a);
-        break;
-      case this.ACTION_DELETE:
+      this.ProcessEqualOperation(a);
+            break;
+        case this.ACTION_DELETE:
         this.ProcessDeleteOperation(a, "diffdel");
-        break;
+      break;
       case this.ACTION_INSERT:
-        this.ProcessInsertOperation(a, "diffins");
-        break;
-      case this.ACTION_NONE:
-        break;
-      case this.ACTION_REPLACE:
+            this.ProcessInsertOperation(a, "diffins");
+      break;
+        case this.ACTION_NONE:
+            break;
+    case this.ACTION_REPLACE:
         this.ProcessReplaceOperation(a);
-        break;
+      break;
       default:
-        break;
+      break;
     }
   },
   ProcessReplaceOperation: function(a) {
