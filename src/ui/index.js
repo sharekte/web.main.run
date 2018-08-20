@@ -1,26 +1,30 @@
 import MButton from "./components/button/index.js";
 import MInput from "./components/input/index.js";
+import MIcon from "./components/icons/index.js";
 
-const components = [MButton, MInput];
+const components = [
+    MButton,
+    MInput,
+    MIcon
+];
 
 const install = function(Vue) {
-  components.forEach(component => {
-    Vue.component(component.name, component);
-  });
+    components.forEach(component => {
+        Vue.component(component.name, component);
+    });
+
+    const requireAll = requireContext => requireContext.keys().map(requireContext);
+    const req = require.context('./components/icons/src/svgs', false, /\.svg$/);
+    requireAll(req);
 };
 
 if (typeof window !== "undefined" && window.Vue) {
   install(window.Vue);
 }
 
-// module.exports = {
-//     install,
-//     MButton
-// };
-
-//module.exports.default = module.exports;
 export default {
-  install,
-  MButton,
-  MInput
+    install,
+    MButton,
+    MInput,
+    MIcon
 };
