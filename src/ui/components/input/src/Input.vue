@@ -31,7 +31,7 @@
             @blur="onBlur"
         >
         <label class="m-input__label m-input__label--haruki" :for="inputId">
-            <span class="m-input__label-content m-input__label-content--haruki">Haruki</span>
+            <span class="m-input__label-content m-input__label-content--haruki">{{lable}}</span>
         </label>
     </span>
 
@@ -52,7 +52,7 @@
             @blur="onBlur"
         >
         <label class="m-input__label m-input__label--yoko" :for="inputId">
-            <span class="m-input__label-content m-input__label-content--yoko">yoko</span>
+            <span class="m-input__label-content m-input__label-content--yoko">{{lable}}</span>
         </label>
     </span>
 
@@ -73,7 +73,7 @@
             @blur="onBlur"
         >
         <label class="m-input__label m-input__label--ichiro" :for="inputId">
-            <span class="m-input__label-content m-input__label-content--ichiro">Ichiro</span>
+            <span class="m-input__label-content m-input__label-content--ichiro">{{lable}}</span>
         </label>
     </span>
 
@@ -94,7 +94,7 @@
             @blur="onBlur"
         >
         <label class="m-input__label m-input__label--juro" :for="inputId">
-            <span class="m-input__label-content m-input__label-content--juro">安装</span>
+            <span class="m-input__label-content m-input__label-content--juro">{{lable}}</span>
         </label>
     </span>
    
@@ -125,10 +125,14 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    lable: {
+      type: String,
+      default: "label"
     }
   },
   created() {
-    console.log("created");
+    //console.log("created");
     this.inputId = Math.random()
       .toString(36)
       .substr(2);
@@ -146,10 +150,10 @@ export default {
       this.currentValue = value;
     },
     onFocus() {
-      console.log("focus");
+      // console.log("focus");
     },
     onBlur() {
-      console.log("blur");
+      // console.log("blur");
     }
   },
   watch: {
