@@ -37,6 +37,7 @@ export default {
               md.utils.escapeHtml(str) +
               "</code></pre>"
             );
+            //return hljs.highlightAuto(str).value;
           }
         });
 

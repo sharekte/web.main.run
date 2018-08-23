@@ -11,7 +11,7 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
-import "@/assets/css/font-awesome.min.css";
+//import "@/assets/css/font-awesome.min.css";
 import "@/assets/stylus/style.styl";
 
 import UI from "@/ui";
