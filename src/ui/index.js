@@ -1,10 +1,12 @@
 import MButton from "./components/button/index.js";
 import MInput from "./components/input/index.js";
+import MTextarea from "./components/textarea/index.js";
 import MIcon from "./components/icons/index.js";
 
 const components = [
     MButton,
     MInput,
+    MTextarea,
     MIcon
 ];
 
@@ -26,5 +28,6 @@ export default {
     install,
     MButton,
     MInput,
+    MTextarea,
     MIcon
 };

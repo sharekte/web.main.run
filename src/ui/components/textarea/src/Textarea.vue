@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  name: "MInput",
+  name: "MTextarea",
   data() {
     return {
       currentValue: this.value
