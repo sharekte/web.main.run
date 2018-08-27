@@ -35,22 +35,8 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    articles() {
-      return this.$store.getters.getArticles;
-    },
-    hasMore() {
-      return this.$store.getters.hasArticles;
-    }
-  },
   created() {
-    //this.fecthDate()
-    if (this.articles.length == 0) {
-      this.fecthDate();
-    } else if (this.$store.state.article.has_update) {
-      this.$store.dispatch("refrash_articles");
-      this.$store.commit("HAS_UPDATE_RESET");
-    }
+    this.fecthDate()
 
     let md = new MarkdownIt({
       highlight: function(str, lang) {
@@ -73,12 +59,6 @@ export default {
     });
 
     this.md = md;
-  },
-  mounted() {
-    // if (this.$store.getters.hasArticleUpdate) {
-    //   this.fecthDate()
-    //   this.$store.dispatch('has_update_reset')
-    // }
   },
   methods: {
     fecthDate() {
