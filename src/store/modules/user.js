@@ -1,53 +1,32 @@
 import LocalStore from "store";
+import { login } from "@/api/user";
 
-import { SAVE_TOKEN, DESTORY_TOKEN, SAVE_USER } from "../mutation-types";
-import { User } from "@/resource";
+const user = {
+    state: {
+        token: LocalStore.get("token"),
+        user: {}
+    },
+    mutations: {
+        SET_TOKEN (state, token) {
+            state.token = token;
+            LocalStore.set("token", token);
+        },
+        SET_USER (state, user) {
+            state.user = user;
+        }
+    },
+    actions: {
+        Login({ commit }, { username, password }) {
+            return new Promise((resolve, reject) => {
+                login({username, password}).then(res => {
+                    commit("SET_TOKEN", res.data.token);
+                    resolve();
+                }).catch(err => {
+                    reject(err);
+                })
+            });
+        }
+    }
+}
 
-const state = {
-  token: "",
-  user: {}
-};
-
-const getters = {
-  getToken: state => {
-    return state.token;
-  }
-  //getToken: state => state.token
-};
-
-const actions = {
-  login({ commit, state }, data) {
-    User.save({ action: "login" }, data).then(response => {
-      if (response.body.success) {
-        commit("SAVE_TOKEN", response.body.data.token);
-        LocalStore.set("token", response.body.data.token);
-      }
-    });
-  },
-  logout({ commit, state }) {
-    LocalStore.remove("token");
-    commit("DESTORY_TOKEN");
-  },
-  set_token({ commit, state }, token) {
-    commit("SAVE_TOKEN", token);
-  }
-};
-
-const mutations = {
-  [SAVE_TOKEN](state, token) {
-    state.token = token;
-  },
-  [DESTORY_TOKEN](state) {
-    state.token = "";
-  },
-  [SAVE_USER](state, user) {
-    state.user = user;
-  }
-};
-
-export default {
-  state,
-  getters,
-  actions,
-  mutations
-};
+export default user;

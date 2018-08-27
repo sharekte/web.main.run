@@ -9,10 +9,7 @@
             <div class="menu">
                 <ul>
                     <li><m-button design="ujarak" size="small" special @click="linkTo('home')">HOME</m-button></li>
-                    <li><m-button design="ujarak" size="small" special @click="linkTo('collect')">COLLECTIONS</m-button></li>
-                    <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="linkTo('edit')">WRITE</m-button></li>
-                    <li v-if="!isLogin"><m-button design="ujarak" size="small" special @click="linkTo('login')">LOGIN</m-button></li>
-                    <li v-if="isLogin"><m-button design="ujarak" size="small" special @click="toLogout">LOGOUT</m-button></li>
+                    <!-- <li><m-button design="ujarak" size="small" special @click="linkTo('collect')">COLLECTIONS</m-button></li> -->
                 </ul>
             </div>
         </div>
@@ -23,12 +20,12 @@
 export default {
   computed: {
     isLogin() {
-      return this.$store.getters.getToken;
+      
     }
   },
   methods: {
     toLogout() {
-      this.$store.dispatch("logout");
+      
     },
     linkTo(name) {
       this.$router.push({ name: name });

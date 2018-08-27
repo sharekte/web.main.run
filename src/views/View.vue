@@ -7,7 +7,6 @@
 <script>
 import MarkdownIt from "markdown-it";
 import hljs from "highlight.js";
-import { Article } from "@/resource";
 export default {
   data() {
     return {
@@ -16,35 +15,35 @@ export default {
     };
   },
   created() {
-    Article.get({ id: this.$route.params.id }).then(response => {
-      if (response.body.success) {
-        const article = response.body.data;
+    // Article.get({ id: this.$route.params.id }).then(response => {
+    //   if (response.body.success) {
+    //     const article = response.body.data;
 
-        const md = new MarkdownIt({
-          highlight: function(str, lang) {
-            if (lang && hljs.getLanguage(lang)) {
-              try {
-                return (
-                  '<pre class="hljs"><code>' +
-                  hljs.highlight(lang, str, true).value +
-                  "</code></pre>"
-                );
-              } catch (__) {}
-            }
+    //     const md = new MarkdownIt({
+    //       highlight: function(str, lang) {
+    //         if (lang && hljs.getLanguage(lang)) {
+    //           try {
+    //             return (
+    //               '<pre class="hljs"><code>' +
+    //               hljs.highlight(lang, str, true).value +
+    //               "</code></pre>"
+    //             );
+    //           } catch (__) {}
+    //         }
 
-            return (
-              '<pre class="hljs"><code>' +
-              md.utils.escapeHtml(str) +
-              "</code></pre>"
-            );
-            //return hljs.highlightAuto(str).value;
-          }
-        });
+    //         return (
+    //           '<pre class="hljs"><code>' +
+    //           md.utils.escapeHtml(str) +
+    //           "</code></pre>"
+    //         );
+    //         //return hljs.highlightAuto(str).value;
+    //       }
+    //     });
 
-        this.title = article.title;
-        this.html = md.render(article.content);
-      }
-    });
+    //     this.title = article.title;
+    //     this.html = md.render(article.content);
+    //   }
+    // });
   }
 };
 </script>
