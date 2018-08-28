@@ -15,46 +15,46 @@
 </template>
 <script>
 export default {
-  name: "MTextarea",
-  data() {
-    return {
-      currentValue: this.value
-    };
-  },
-  props: {
-    value: {
-      type: [String, Number],
-      default: ""
+    name: "MTextarea",
+    data() {
+        return {
+            currentValue: this.value
+        };
     },
-    size: String,
-    disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  computed: {
-    inputType() {
-      return this.type;
-    }
-  },
-  methods: {
-    onInput(event) {
-      const value = event.target.value;
+    props: {
+        value: {
+            type: [String, Number],
+            default: ""
+        },
+        size: String,
+        disabled: {
+            type: Boolean,
+            default: false
+        }
+    },
+    computed: {
+        inputType() {
+            return this.type;
+        }
+    },
+    methods: {
+        onInput(event) {
+            const value = event.target.value;
 
-      this.$emit("input", value);
-      this.currentValue = value;
+            this.$emit("input", value);
+            this.currentValue = value;
+        },
+        onFocus() {
+            // console.log("focus");
+        },
+        onBlur() {
+            // console.log("blur");
+        }
     },
-    onFocus() {
-      // console.log("focus");
-    },
-    onBlur() {
-      // console.log("blur");
+    watch: {
+        value(val, oldValue) {
+            this.currentValue = val;
+        }
     }
-  },
-  watch: {
-    value(val, oldValue) {
-      this.currentValue = val;
-    }
-  }
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
-    <div class="home">
-        <section class="main">
+        <section class="section">
             <!-- <div class="articles">
                 <div class="article" v-for="article in articles" :key="article.id">
                     <div class="box" @click="linkTo(article.id)">
@@ -15,20 +14,25 @@
                 </div>
             </div> -->
             <div class="articles">
-                <div class="article" v-for="article in articles" :key="article.id">
-                    <div class="title" @click="linkTo(article.id)"><h4>{{article.title}}</h4></div>
-                    <!-- <div class="description" v-html="mdToHtml(article.summary)"></div> -->
+                <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
+                    <div class="title">{{article.title}}</div>
+                    <div class="description">{{article.summary}}</div>
+                    <div class="info">
+                        <span>{{article.create_at}}</span>
+                    </div>
                 </div>
+            </div>
+            <div class="page">
+                <span><m-button @click="prev_page" :disabled="!has_prev_page">上一页</m-button></span>
+                <span>第{{listQuery.page}}页</span>
+                <span><m-button @click="next_page" :disabled="!has_next_page">下一页</m-button></span>
             </div>
             <!-- <m-button design="moema" class="fit" icon="fa-hourglass-half" @click="loadMore" v-bind:disabled="!hasMore" v-if="hasMore">加载更多</m-button>
             <m-button design="moema" class="fit" icon="fa-hourglass-o" disabled v-else>没有更多了</m-button> -->
         </section>
-    </div>
 </template>
 
 <script>
-import MarkdownIt from "markdown-it";
-import hljs from "highlight.js";
 import { listArticle } from "@/api/article";
 
 export default {
@@ -43,74 +47,88 @@ export default {
         };
     },
     created() {
-        this.fecthDate()
-
-        let md = new MarkdownIt({
-            highlight: function(str, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    try {
-                        return (
-                            '<pre class="hljs"><code>' +
-                            hljs.highlight(lang, str, true).value +
-                            "</code></pre>"
-                        );
-                    } catch (__) {}
-                }
-
-                return (
-                    '<pre class="hljs"><code>' +
-                    md.utils.escapeHtml(str) +
-                    "</code></pre>"
-                );
-            }
-        });
-
-        this.md = md;
+        //this.fecthDate()
+        if (this.count === 0) {
+            this.fecthDate();
+        }
     },
     methods: {
         fecthDate() {
             listArticle(this.listQuery).then(response => {
-                console.log(response)
+                //console.log(response)
                 this.articles = response.data.articles;
+                this.count = response.data.count;
             });
         },
-        loadMore() {
-            //this.$store.dispatch("get_articles_more");
-        },
         linkTo(id) {
-            this.$router.push({ name: "view", params: { id: id } });
+            this.$router.push({ name: "post", params: { id: id } });
         },
-        mdToHtml(m) {
-            return this.md.render(m);
+        next_page() {
+            this.listQuery.page += 1;
+            this.fecthDate();
+        },
+        prev_page() {
+            this.listQuery.page -= 1;
+            this.fecthDate();
+        }
+    },
+    computed: {
+        has_next_page() {
+            if (this.listQuery.page * this.listQuery.per_page >= this.count) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        has_prev_page() {
+            if (this.listQuery.page === 1) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 };
 </script>
 <style lang="stylus" scoped>
-@import "../../src/ui/style/variables.styl"
-
-.home {
-    position: relative
-    overflow: hidden
-}
-
-.main {
-    margin: 10px auto
-    max-width: 980px
+.section {
+    margin: 10px auto;
+    max-width: 980px;
+    
+    .page {
+        margin-top: 10px;
+        text-align: center;
+        
+        span {
+            margin: 0 5px 0 5px;
+        }
+    }
 
     .articles {
-        padding-top: 40px
+        padding-top: 40px;
+
         .article {
-            margin-bottom: 40px
-            .title h4 {
-                color: font-a-color
-                cursor: pointer
-                display: inline-block
-                font-size: 2rem
-                
-                &:hover {
-                    color: font-a-hover-color
-                }
+            margin-bottom: 40px;
+            // border-bottom: 1px solid #F5F5F5;
+            cursor: pointer;
+            
+            &:hover .title {
+                color: #f58500;
+            }
+
+            .title {
+                //color: font-a-color
+                transition: color 0.15s ease-in-out;
+                display: inline-block;
+                font-size: 2.4rem;
+            }
+            
+            .description {
+                color: #9ea0a6;
+            }
+            
+            .info {
+                color: rgba(0,0,0,.1);
             }
         }
     }

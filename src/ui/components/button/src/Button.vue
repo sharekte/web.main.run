@@ -95,31 +95,31 @@
 </template>
 <script>
 export default {
-  name: "MButton",
-  props: {
-    design: {
-      type: String,
-      default: "default"
+    name: "MButton",
+    props: {
+        design: {
+            type: String,
+            default: "default"
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        size: String,
+        fit: Boolean,
+        next: Boolean,
+        special: Boolean,
+        icon: String
     },
-    disabled: {
-      type: Boolean,
-      default: false
+    computed: {
+        buttonSize() {
+            return this.size;
+        }
     },
-    size: String,
-    fit: Boolean,
-    next: Boolean,
-    special: Boolean,
-    icon: String
-  },
-  computed: {
-    buttonSize() {
-      return this.size;
+    methods: {
+        handleClick(event) {
+            this.$emit("click", event);
+        }
     }
-  },
-  methods: {
-    handleClick(event) {
-      this.$emit("click", event);
-    }
-  }
 };
 </script>

@@ -1,16 +1,11 @@
 <template>
-    <header>
-        <!-- <div class="home-bg">
-      <div class="info">
-
-      </div>
-    </div> -->
+    <header class="header">
         <div class="header-main">
-            <div class="menu">
-                <ul>
-                    <li><m-button design="ujarak" size="small" special @click="linkTo('home')">HOME</m-button></li>
-                    <!-- <li><m-button design="ujarak" size="small" special @click="linkTo('collect')">COLLECTIONS</m-button></li> -->
-                </ul>
+            <div class="logo" @click="$router.push({name: 'home'})">
+                MAIN.RUN
+            </div>
+            <div class="about" @click="$router.push({name: 'about'})">
+                About
             </div>
         </div>
     </header>
@@ -18,27 +13,17 @@
 
 <script>
 export default {
-  computed: {
-    isLogin() {
-      
-    }
-  },
-  methods: {
-    toLogout() {
-      
+    computed: {
+
     },
-    linkTo(name) {
-      this.$router.push({ name: name });
+    methods: {
+      
     }
-  },
-  mounted() {
-    //console.log(this.$route.name == 'home')
-  }
 };
 </script>
 
 <style lang="stylus" scoped>
-header {
+.header {
     border-bottom: 1px solid #F5F5F5;
     flex: 0 0 auto;
 
@@ -46,20 +31,30 @@ header {
         margin: 0 auto;
         height: 6rem;
         max-width: 120rem;
-
-        .menu {
-            height: 10rem;
+        display: flex;
+        justify-content: space-between;
+        
+        .logo {
+            font-size: 3rem;
             line-height: 6rem;
-
-            ul {
-                display: flex;
-                justify-content: center;
-                list-style: none;
-                
-                li {
-                    padding-left: 1rem;
-                    padding-right: 1rem;
-                }
+            cursor: pointer;
+            color: rgba(0, 0, 0, .2);
+            transition: color 0.15s ease-in-out;
+            
+            &:hover {
+                color: rgba(0, 0, 0, .75);
+            }
+        }
+        
+        .about {
+            font-size: 2rem;
+            line-height: 6rem;
+            cursor: pointer;
+            padding-right: 100px;
+            transition: color 0.15s ease-in-out;
+            
+            &:hover {
+                color: #f58500;
             }
         }
     }

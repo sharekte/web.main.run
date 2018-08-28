@@ -1,24 +1,22 @@
 <template>
     <div class="main">
-        <headers></headers>
-        <!-- <keep-alive> -->
+        <my-header></my-header>
         <div class="content">
             <router-view></router-view>
         </div>
-        <!-- </keep-alive> -->
-        <footers></footers>
+        <my-footer></my-footer>
     </div>
 </template>
 
 <script>
-import Headers from "@/components/layouts/Header";
-import Footers from "@/components/layouts/Footer";
+import MyHeader from "./Header"
+import MyFooter from "./Footer"
 
 export default {
-  components: {
-    Headers,
-    Footers
-  }
+    components: {
+        MyHeader,
+        MyFooter
+    }
 };
 </script>
 
@@ -31,6 +29,7 @@ export default {
 
     .content {
         flex: 1 0 auto;
+        padding: 10px;
     }
 }
 </style>

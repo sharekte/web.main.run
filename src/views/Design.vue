@@ -88,11 +88,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      aa: "a"
-    };
-  }
+    data() {
+        return {
+            aa: "a"
+        };
+    }
 };
 </script>
 <style lang="stylus" scoped>

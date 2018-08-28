@@ -101,65 +101,65 @@
 </template>>
 <script>
 export default {
-  name: "MInput",
-  data() {
-    return {
-      currentValue: this.value,
-      inputId: ""
-    };
-  },
-  props: {
-    design: {
-      type: String,
-      default: "default"
+    name: "MInput",
+    data() {
+        return {
+            currentValue: this.value,
+            inputId: ""
+        };
     },
-    value: {
-      type: [String, Number],
-      default: ""
+    props: {
+        design: {
+            type: String,
+            default: "default"
+        },
+        value: {
+            type: [String, Number],
+            default: ""
+        },
+        type: {
+            type: String,
+            default: "text"
+        },
+        size: String,
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        lable: {
+            type: String,
+            default: "label"
+        }
     },
-    type: {
-      type: String,
-      default: "text"
+    created() {
+        //console.log("created");
+        this.inputId = Math.random()
+            .toString(36)
+            .substr(2);
     },
-    size: String,
-    disabled: {
-      type: Boolean,
-      default: false
+    computed: {
+        inputType() {
+            return this.type;
+        }
     },
-    lable: {
-      type: String,
-      default: "label"
-    }
-  },
-  created() {
-    //console.log("created");
-    this.inputId = Math.random()
-      .toString(36)
-      .substr(2);
-  },
-  computed: {
-    inputType() {
-      return this.type;
-    }
-  },
-  methods: {
-    onInput(event) {
-      const value = event.target.value;
+    methods: {
+        onInput(event) {
+            const value = event.target.value;
 
-      this.$emit("input", value);
-      this.currentValue = value;
+            this.$emit("input", value);
+            this.currentValue = value;
+        },
+        onFocus() {
+            // console.log("focus");
+        },
+        onBlur() {
+            // console.log("blur");
+        }
     },
-    onFocus() {
-      // console.log("focus");
-    },
-    onBlur() {
-      // console.log("blur");
+    watch: {
+        value(val, oldValue) {
+            this.currentValue = val;
+        }
     }
-  },
-  watch: {
-    value(val, oldValue) {
-      this.currentValue = val;
-    }
-  }
 };
 </script>

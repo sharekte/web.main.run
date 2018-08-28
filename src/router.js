@@ -24,9 +24,13 @@ export default new Router({
                     name: "home",
                     component: () => import("@/views/Home")
                 }, {
-                    path: "/view/:id([a-z0-9]{24})",
-                    name: "view",
-                    component: () => import("@/views/View")
+                    path: "/p/:id([a-z0-9]{24})",
+                    name: "post",
+                    component: () => import("@/views/Post")
+                }, {
+                    path: "/about",
+                    name: "about",
+                    component: () => import("@/views/About")
                 }, {
                     path: "/demo",
                     component: () => import("@/components/Demo")
@@ -35,10 +39,6 @@ export default new Router({
                     component: () => import("@/views/Design")
                 }
             ]
-        }, {
-            path: "/login",
-            name: "login",
-            component: () => import("@/views/Login")
         }, {
             path: "*",
             name: "404",
