@@ -19,10 +19,10 @@ export default {
         const article_id = this.$route.params.id;
 
         detailArticle(article_id).then(response => {
-            console.log(response)
-
             this.article = response.data;
             this.article.content = this.randerMD(this.article.content);
+        }).catch(() => {
+            this.$router.replace({ name: "page404" });
         });
     },
     methods: {

@@ -41,7 +41,7 @@ export default new Router({
             ]
         }, {
             path: "*",
-            name: "404",
+            name: "page404",
             component: () => import("@/views/404")
         }
     ]

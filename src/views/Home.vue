@@ -47,15 +47,21 @@ export default {
         };
     },
     created() {
-        //this.fecthDate()
-        if (this.count === 0) {
-            this.fecthDate();
+        const query = this.$route.query;
+
+        if (query.page) {
+            this.listQuery.page = query.page - 0;
         }
+
+        this.fecthDate();
     },
     methods: {
         fecthDate() {
             listArticle(this.listQuery).then(response => {
-                //console.log(response)
+                if (response.data.articles.length === 0) {
+                    this.$router.replace({ name: "page404" });
+                }
+
                 this.articles = response.data.articles;
                 this.count = response.data.count;
             });
@@ -64,12 +70,14 @@ export default {
             this.$router.push({ name: "post", params: { id: id } });
         },
         next_page() {
-            this.listQuery.page += 1;
-            this.fecthDate();
+            // this.listQuery.page += 1;
+            // this.fecthDate();
+            this.$router.push({ name: "home", query: { page: this.listQuery.page + 1}});
         },
         prev_page() {
-            this.listQuery.page -= 1;
-            this.fecthDate();
+            // this.listQuery.page -= 1;
+            // this.fecthDate();
+            this.$router.push({ name: "home", query: { page: this.listQuery.page - 1}});
         }
     },
     computed: {
@@ -86,6 +94,17 @@ export default {
             } else {
                 return true;
             }
+        }
+    },
+    watch: {
+        "$route" (to, from) {
+            const query = to.query;
+
+            if (query.page) {
+                this.listQuery.page = query.page - 0;
+            }
+
+            this.fecthDate();
         }
     }
 };
