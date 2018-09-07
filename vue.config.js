@@ -1,6 +1,6 @@
 module.exports = {
     baseUrl:
-    process.env.NODE_ENV === "production" ? "https://cdn.danclive.com/" : "/",
+    process.env.NODE_ENV === "production" ? "https://cdn.danclive.com/static/" : "/",
 
     outputDir: undefined,
     assetsDir: undefined,
