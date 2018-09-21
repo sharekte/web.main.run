@@ -19,7 +19,7 @@ box-sizing() {
 }
 
 // container
-.container {
+.m-container {
     margin-left: auto;
     margin-right: auto;
     padding-left: (gutter-width / 2);
@@ -58,7 +58,7 @@ for index in (1..colums) {
 // table and up
 
 @media (min-width: screen-tablet) {
-    .container {
+    .m-container {
         max-width: screen-tablet - (gutter-width * 2);
     }
 
@@ -111,7 +111,7 @@ for index in (1..colums) {
 // desktop and up
 
 @media (min-width: screen-desktop) {
-    .container {
+    .m-container {
         max-width: screen-desktop - (gutter-width * 2);
     }
     
@@ -164,7 +164,7 @@ for index in (1..colums) {
 // widescreen and up
 
 @media (min-width: screen-wide) {
-    .container {
+    .m-container {
         max-width: screen-wide - (gutter-width * 2);
     }
 
@@ -305,7 +305,7 @@ for index in (1..colums) {
     }
     .hide-mb {
         display: none !important;
-    } 
+    }
 }
 @media (min-width: screen-tablet) and (max-width: screen-desktop - 1){
     .show-tb {
@@ -313,7 +313,7 @@ for index in (1..colums) {
     }
     .hide-tb {
         display: none !important;
-    } 
+    }
 }
 @media (min-width: screen-desktop) and (max-width: screen-wide - 1){
     .show-de {
@@ -321,7 +321,7 @@ for index in (1..colums) {
     }
     .hide-de {
         display: none !important;
-    } 
+    }
 }
 @media (min-width: screen-wide) {
     .show-wd {
@@ -329,5 +329,38 @@ for index in (1..colums) {
     }
     .hide-wd {
         display: none !important;
-    } 
+    }
+}
+
+.Grid            { display: flex; flex-wrap: wrap; }
+.Grid.\-top      { align-items: flex-start; }
+.Grid.\-middle   { align-items: center; }
+.Grid.\-bottom   { align-items: flex-end; }
+.Grid.\-stretch  { align-items: stretch; }
+.Grid.\-baseline { align-items: baseline; }
+.Grid.\-left     { justify-content: flex-start; }
+.Grid.\-center   { justify-content: center; }
+.Grid.\-right    { justify-content: flex-end; }
+.Grid.\-between  { justify-content: space-between; }
+.Grid.\-around   { justify-content: space-around; }
+
+.Cell            { box-sizing: border-box; flex-shrink: 0; }
+.Cell.\-fill     { width: 0; min-width: 0; flex-grow: 1; }
+
+for index in (1..10) {
+    .Cell.\-c{index}of10 {
+        width: "calc(100% * %s / 10)" % index;
+    }
+}
+
+for index in (1..12) {
+    .Cell.\-c{index}of10 {
+        width: "calc(100% * %s / 10)" % index;
+    }
+}
+
+for index in (1..24) {
+    .Cell.\-c{index}of24 {
+        width: "calc(100% * %s / 24)" % index;
+    }
 }
