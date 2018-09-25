@@ -49,8 +49,12 @@ export default {
     created() {
         const query = this.$route.query;
 
+        console.log("22222222222")
+
         if (query.page) {
             this.listQuery.page = query.page - 0;
+        } else {
+            this.listQuery.page = 1;
         }
 
         this.fecthDate();
@@ -100,8 +104,12 @@ export default {
         "$route" (to, from) {
             const query = to.query;
 
+            console.log("111111111111")
+
             if (query.page) {
                 this.listQuery.page = query.page - 0;
+            } else {
+                this.listQuery.page = 1;
             }
 
             this.fecthDate();
@@ -147,7 +155,7 @@ export default {
             }
             
             .info {
-                color: rgba(0,0,0,.1);
+                color: rgba(0,0,0,.4);
             }
         }
     }
