@@ -60,9 +60,9 @@ export default {
     }
 };
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 .section {
-    padding: 20px;
+    //padding: 20px;
 
     .title {
         text-align: center;
