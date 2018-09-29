@@ -5,7 +5,7 @@ const article = {
         articles: [],
         count: 0,
         page: 1,
-        per_page: 20
+        per_page: 50
     },
     mutations: {
         PUSH_ARTICLES (state, articles) {
@@ -13,12 +13,17 @@ const article = {
         },
         SET_COUNT (state, count) {
             state.count = count;
+        },
+        SET_PAGE (state, page) {
+            state.page = page;
         }
     },
     actions: {
-        GetMore({ commit, state }) {
+        GetArticles({ commit, state }) {
             return new Promise((resolve, reject) => {
                 listArticle({page: state.page, per_page: state.per_page}).then(res => {
+                    commit("PUSH_ARTICLES", res.data.articles);
+                    commit("SET_COUNT", res.data.count);
                     resolve();
                 }).catch(err => {
                     reject(err);

@@ -11,6 +11,7 @@
 <script>
 import MyHeader from "./Header"
 import MyFooter from "./Footer"
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     components: {
@@ -29,7 +30,7 @@ export default {
 
     .content {
         flex: 1 0 auto;
-        padding: 10px;
+        margin-top: 50px;
     }
 }
 </style>

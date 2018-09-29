@@ -348,19 +348,79 @@ for index in (1..colums) {
 .Cell.\-fill     { width: 0; min-width: 0; flex-grow: 1; }
 
 for index in (1..10) {
-    .Cell.\-c{index}of10 {
+    .Cell.\-mb-c{index}of10 {
         width: "calc(100% * %s / 10)" % index;
     }
 }
 
 for index in (1..12) {
-    .Cell.\-c{index}of10 {
-        width: "calc(100% * %s / 10)" % index;
+    .Cell.\-mb-c{index}of12 {
+        width: "calc(100% * %s / 12)" % index;
     }
 }
 
 for index in (1..24) {
-    .Cell.\-c{index}of24 {
+    .Cell.\-mb-c{index}of24 {
         width: "calc(100% * %s / 24)" % index;
+    }
+}
+
+@media (min-width: screen-tablet) {
+    for index in (1..10) {
+        .Cell.\-tb-c{index}of10 {
+            width: "calc(100% * %s / 10)" % index;
+        }
+    }
+
+    for index in (1..12) {
+        .Cell.\-tb-c{index}of12 {
+            width: "calc(100% * %s / 12)" % index;
+        }
+    }
+
+    for index in (1..24) {
+        .Cell.\-tb-c{index}of24 {
+            width: "calc(100% * %s / 24)" % index;
+        }
+    }
+}
+
+@media (min-width: screen-desktop) {
+    for index in (1..10) {
+        .Cell.\-c{index}of10 {
+            width: "calc(100% * %s / 10)" % index;
+        }
+    }
+
+    for index in (1..12) {
+        .Cell.\-c{index}of12 {
+            width: "calc(100% * %s / 12)" % index;
+        }
+    }
+
+    for index in (1..24) {
+        .Cell.\-c{index}of24 {
+            width: "calc(100% * %s / 24)" % index;
+        }
+    }
+}
+
+@media (min-width: screen-wide) {
+    for index in (1..10) {
+        .Cell.\-wd-c{index}of10 {
+            width: "calc(100% * %s / 10)" % index;
+        }
+    }
+
+    for index in (1..12) {
+        .Cell.\-wd-c{index}of12 {
+            width: "calc(100% * %s / 12)" % index;
+        }
+    }
+
+    for index in (1..24) {
+        .Cell.\-wd-c{index}of24 {
+            width: "calc(100% * %s / 24)" % index;
+        }
     }
 }
