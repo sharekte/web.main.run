@@ -208,7 +208,7 @@ export default {
                 img {
                     width: 100%;
                     height: 100%;
-                    opacity: 0.7;
+                    opacity: 0.8;
                     transition: opacity 0.15s ease-in-out, filter 0.15s ease-in-out;
                     filter: grayscale(20%)
                 }
@@ -218,7 +218,7 @@ export default {
                 position: absolute;
                 padding: 10px;
                 bottom: 0;
-                z-index: 999;
+                z-index: 99;
                 
                 .title {
                     color: #ffffff;
