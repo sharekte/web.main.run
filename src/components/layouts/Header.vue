@@ -12,16 +12,16 @@
 
         <div class="container">
             <nav id="navigation">
-                <a href="#" class="logo">MAIN.RUN</a>
+                <a href="#" class="logo" @click.prevent="linkTo('home')">MAIN.RUN</a>
                 <a aria-label="mobile menu" class="nav-toggle" @click="toggle" :class="[showMenu ? 'open': '']">
                     <span></span>
                     <span></span>
                     <span></span>
                 </a>
                 <ul class="menu-left" :class="[showMenu ? 'collapse': '']">
-                    <li><a href="#about">文章</a></li>
+                    <li><a href="#about" @click.prevent="linkTo('home')">文章</a></li>
                     <li><a href="#exp">专题</a></li>
-                    <li><a href="#skills">关于</a></li>
+                    <li><a href="#skills" @click.prevent="linkTo('about')">关于</a></li>
                 </ul>
             </nav>
         </div>
@@ -76,6 +76,10 @@ export default {
         },
         closeMenu() {
             this.showMenu = false;
+        },
+        linkTo(name) {
+            this.closeMenu();
+            this.$router.push({name: name});
         }
     },
     mounted() {
@@ -153,7 +157,10 @@ a:hover, a :focus {
     transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s;
     transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
     transform: translateY(0);
-    -webkit-transform: translateY(0);
+
+    &.hide-nav {
+        transform: translateY(-120%);
+    }
 
     nav {
         .logo {
@@ -209,10 +216,6 @@ a:hover, a :focus {
                 display: block;
                 max-height: 0;
                 overflow: hidden;
-                -webkit-transition: all 0.3s ease-out;
-                -moz-transition: all 0.3s ease-out;
-                -ms-transition: all 0.3s ease-out;
-                -o-transition: all 0.3s ease-out;
                 transition: all 0.3s ease-out;
                 z-index: 209;
 
@@ -320,7 +323,7 @@ a:hover, a :focus {
     }
 }
 
-.hide-nav {
-    transform: translateY(-120% !important);
-}
+// .hide-nav {
+//     transform: translateY(-120% !important) !important;
+// }
 </style>

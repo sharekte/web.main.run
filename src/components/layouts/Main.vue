@@ -30,7 +30,7 @@ export default {
 
     .content {
         flex: 1 0 auto;
-        margin-top: 50px;
+        margin-top: 60px;
     }
 }
 </style>
