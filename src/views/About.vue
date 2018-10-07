@@ -21,7 +21,7 @@
 
     .content {
         margin 40px auto
-        max-width 980px
+        max-width 1120px
     }
 }
 </style>

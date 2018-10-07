@@ -8,6 +8,7 @@
            @input="onInput"
            @focus="onFocus"
            @blur="onBlur"
+           :placeholder="placeholder"
            :class="[
                disabled ? 'disabled' : '',
                size ? size: '',
@@ -129,7 +130,8 @@ export default {
         lable: {
             type: String,
             default: "label"
-        }
+        },
+        placeholder: String
     },
     created() {
         //console.log("created");

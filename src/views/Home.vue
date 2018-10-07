@@ -13,16 +13,19 @@
                     </div>
                 </div>
             </div> -->
-            <!-- <div class="articles">
+            <div class="articles">
                 <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
                     <div class="title">{{article.title}}</div>
+                    <div class="image" v-if="article.image[0]">
+                        <img :src="article.image[0] + '?imageView2/1/w/1120/h/630/q/75'">
+                    </div>
                     <div class="description">{{article.summary}}</div>
                     <div class="info">
                         <span>{{article.create_at}}</span>
                     </div>
                 </div>
-            </div> -->
-            <div class="articles Grid">
+            </div>
+            <!-- <div class="articles Grid">
                 <div class="article Cell -mb-c10of10 -tb-c5of10 -c4of12" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
                     <div class="img">
                         <img src="https://cdn.danclive.com/upload/FgWQ9BiSA5Immx8Wzvtj2F-FawcY.png">
@@ -34,15 +37,15 @@
                         <div class="title">{{article.title}}</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="page">
                 <span><m-button @click="prev_page" :disabled="!has_prev_page">上一页</m-button></span>
                 <span>第{{page}}页</span>
                 <span><m-button @click="next_page" :disabled="!has_next_page">下一页</m-button></span>
             </div> -->
             <div class="page">
-                <m-button design="moema" class="fit" icon="fa-hourglass-half" @click="next_page" v-bind:disabled="!has_next_page" v-if="has_next_page">加载更多</m-button>
-                <m-button design="moema" class="fit" icon="fa-hourglass-o" disabled v-else>没有更多了</m-button>
+                <m-button special next icon="fa-hourglass-half" @click="next_page" v-if="has_next_page">加载更多</m-button>
+                <m-button special next icon="fa-hourglass-o" disabled v-else>没有更多了<!-- <m-icon icon-class="more"/> --></m-button>
             </div>
         </section>
 </template>
@@ -65,7 +68,7 @@ export default {
     created() {
         // const query = this.$route.query;
 
-        console.log("22222222222")
+        //console.log("22222222222")
 
         // if (query.page) {
         //     this.listQuery.page = query.page - 0;
@@ -167,79 +170,83 @@ export default {
         }
     }
 
-    // .articles {
-    //     padding-top: 40px;
-
-    //     .article {
-    //         margin-bottom: 40px;
-    //         // border-bottom: 1px solid #F5F5F5;
-    //         cursor: pointer;
-            
-    //         &:hover .title {
-    //             color: #f58500;
-    //         }
-
-    //         .title {
-    //             //color: font-a-color
-    //             transition: color 0.15s ease-in-out;
-    //             display: inline-block;
-    //             font-size: 2.4rem;
-    //         }
-            
-    //         .description {
-    //             color: #9ea0a6;
-    //         }
-            
-    //         .info {
-    //             color: rgba(0,0,0,.4);
-    //         }
-    //     }
-    // }
     .articles {
+        padding: 20px 5px 0 5px;
 
         .article {
-            position: relative;
+            margin-bottom: 40px;
+            // border-bottom: 1px solid #F5F5F5;
             cursor: pointer;
+            
+            &:hover .title {
+                color: #f58500;
+            }
 
-            .img {
-                width: 100%;
-                background-color: #000000;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    opacity: 0.8;
-                    transition: opacity 0.15s ease-in-out, filter 0.15s ease-in-out;
-                    filter: grayscale(20%)
-                }
+            .title {
+                //color: font-a-color
+                transition: color 0.15s ease-in-out;
+                display: inline-block;
+                font-size: 2.4rem;
             }
             
-            .content {
-                position: absolute;
-                padding: 10px;
-                bottom: 0;
-                z-index: 99;
-                
-                .title {
-                    color: #ffffff;
-                    font-size: 1.6rem;
-                    font-weight: 600;
-                }
-                
-                .info {
-                    color: #ffffff;
-                    font-size: 1.4rem;
-                }
+            .image {
+                padding: 5px 0 5px 0;
             }
             
-            &:hover {
-                .img img {
-                    opacity: 1;
-                    filter: grayscale(0%)
-                }
+            .description {
+                color: #9ea0a6;
+            }
+            
+            .info {
+                color: rgba(0,0,0,.4);
             }
         }
     }
+    // .articles {
+
+    //     .article {
+    //         position: relative;
+    //         cursor: pointer;
+
+    //         .img {
+    //             width: 100%;
+    //             background-color: #000000;
+
+    //             img {
+    //                 width: 100%;
+    //                 height: 100%;
+    //                 opacity: 0.8;
+    //                 transition: opacity 0.15s ease-in-out, filter 0.15s ease-in-out;
+    //                 filter: grayscale(20%)
+    //             }
+    //         }
+            
+    //         .content {
+    //             position: absolute;
+    //             padding: 10px;
+    //             bottom: 0;
+    //             z-index: 99;
+                
+    //             .title {
+    //                 color: #ffffff;
+    //                 font-size: 1.6rem;
+    //                 font-weight: 600;
+    //             }
+                
+    //             .info {
+    //                 color: #ffffff;
+    //                 font-size: 1.4rem;
+    //             }
+    //         }
+            
+    //         &:hover {
+    //             .img img {
+    //                 opacity: 1;
+    //                 filter: grayscale(0%)
+    //             }
+    //         }
+    //     }
+    // }
 
     // .articles {
     //     padding-top: 20px;

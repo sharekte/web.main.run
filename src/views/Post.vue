@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-        <div class="title"><h2>{{article.title}}</h2></div>
+        <div class="title"><h1>{{article.title}}</h1></div>
         <div class="content" v-html="article.content"></div>
     </section>
 </template>
@@ -70,7 +70,7 @@ export default {
 
     .content {
         margin: 40px auto;
-        max-width: 980px;
+        max-width: 1200px;
         
         img {
             max-width: 100%;

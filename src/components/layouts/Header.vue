@@ -46,7 +46,6 @@ export default {
     },
     methods: {
         hasScrolled() {
-            //console.log("Aaaa")
             //sconsole.dir(window.scrollTop)
             let st = window.scrollY;
 
@@ -56,12 +55,10 @@ export default {
 
             if (st > this.lastScrollTop && st > this.navbarHeight) {
                 // scroll Down
-                console.log(111)
                 this.showNav = false;
                 this.showMenu = false;
             } else {
                 // scroll Up
-                console.log(222)
                 this.showNav = true;
             }
 
@@ -83,7 +80,7 @@ export default {
         }
     },
     mounted() {
-        console.dir(this.$refs.header);
+        //console.dir(this.$refs.header);
         this.navbarHeight = this.$refs.header.clientHeight;
 
         let _this = this;

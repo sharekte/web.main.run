@@ -5,7 +5,7 @@ const article = {
         articles: [],
         count: 0,
         page: 1,
-        per_page: 50
+        per_page: 10
     },
     mutations: {
         PUSH_ARTICLES (state, articles) {

@@ -7,6 +7,7 @@
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
+        :placeholder="placeholder"
         :class="[
             disabled ? 'disabled' : '',
             size ? size: '',
@@ -27,6 +28,7 @@ export default {
             default: ""
         },
         size: String,
+        placeholder: String,
         disabled: {
             type: Boolean,
             default: false
