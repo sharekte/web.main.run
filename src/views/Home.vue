@@ -171,7 +171,7 @@ export default {
     }
 
     .articles {
-        padding: 20px 5px 0 5px;
+        padding: 0 5px 20px 5px;
 
         .article {
             margin-bottom: 40px;
