@@ -70,7 +70,7 @@ export default {
 
     .content {
         margin: 40px auto;
-        max-width: 1200px;
+        max-width: 820px;
         
         img {
             max-width: 100%;

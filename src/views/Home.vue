@@ -17,7 +17,7 @@
                 <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
                     <div class="title">{{article.title}}</div>
                     <div class="image" v-if="article.image[0]">
-                        <img :src="article.image[0] + '?imageView2/1/w/1120/h/630/q/75'">
+                        <img :src="article.image[0] + '?imageView2/1/w/1200/h/560/q/75'">
                     </div>
                     <div class="description">{{article.summary}}</div>
                     <div class="info">
@@ -159,7 +159,7 @@ export default {
 <style lang="stylus" scoped>
 .section {
     margin: 10px auto;
-    max-width: 1200px;
+    max-width: 820px;
     
     .page {
         margin-top: 10px;
@@ -194,7 +194,7 @@ export default {
             }
             
             .description {
-                color: #9ea0a6;
+                //color: #9ea0a6;
             }
             
             .info {
