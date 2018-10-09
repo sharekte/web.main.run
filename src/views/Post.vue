@@ -1,11 +1,8 @@
 <template>
     <section class="section">
-        <!-- <div class="top-image image">
-            <img :src="article.image[1] + '?imageView2/1/w/3840/h/1790/q/75'">
-        </div> -->
-        <article class="article image">
+        <article class="article">
             <div class="title"><h1>{{article.title}}</h1></div>
-            <div class="top-image" v-if="article.image[1]">
+            <div class="top-image image" v-if="article.image && article.image.length > 1">
                 <img :src="article.image[1] + '?imageView2/1/w/3840/h/1790/q/75'">
             </div>
             <div class="content" v-html="article.content"></div>
