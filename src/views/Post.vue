@@ -1,7 +1,15 @@
 <template>
     <section class="section">
-        <div class="title"><h1>{{article.title}}</h1></div>
-        <div class="content" v-html="article.content"></div>
+        <!-- <div class="top-image image">
+            <img :src="article.image[1] + '?imageView2/1/w/3840/h/1790/q/75'">
+        </div> -->
+        <article class="article image">
+            <div class="title"><h1>{{article.title}}</h1></div>
+            <div class="top-image" v-if="article.image[1]">
+                <img :src="article.image[1] + '?imageView2/1/w/3840/h/1790/q/75'">
+            </div>
+            <div class="content" v-html="article.content"></div>
+        </article>
     </section>
 </template>
 <script>
@@ -63,17 +71,40 @@ export default {
 <style lang="stylus" scoped>
 .section {
     padding: 10px;
+    
+    // .top-image {
+    //     img {
+    //         width: 100%;
+    //     }
+    // }
 
-    .title {
-        text-align: center;
-    }
-
-    .content {
-        margin: 40px auto;
-        max-width: 820px;
+    .article {
+        margin: 0px auto;
+        padding: 20px 0 10px 0;
+        max-width: 860px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        transition: box-shadow 0.3s ease-in-out;
         
-        img {
-            max-width: 100%;
+        &:hover {
+            box-shadow: 0 3px 3px rgba(170,170,170,.2);
+        }
+
+        .title {
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        .top-image {
+            margin-top: 20px;
+        }
+
+        .content {
+            margin-top: 40px;
+            padding: 0 10px;
+
+            img {
+                max-width: 100%;
+            }
         }
     }
 }

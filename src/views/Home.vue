@@ -15,7 +15,17 @@
             </div> -->
             <div class="articles">
                 <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
-                    <div class="title">{{article.title}}</div>
+                    <div class="title"><h1>{{article.title}}</h1></div>
+                    <div class="image" v-if="article.image[0]">
+                        <img :src="article.image[0] + '?imageView2/1/w/1200/h/560/q/75'">
+                    </div>
+                    <div class="description">{{article.summary}}</div>
+                    <div class="info">
+                        <span>{{article.create_at}}</span>
+                    </div>
+                </div>
+                <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
+                    <div class="title"><h1>{{article.title}}</h1></div>
                     <div class="image" v-if="article.image[0]">
                         <img :src="article.image[0] + '?imageView2/1/w/1200/h/560/q/75'">
                     </div>
@@ -159,7 +169,7 @@ export default {
 <style lang="stylus" scoped>
 .section {
     margin: 10px auto;
-    max-width: 820px;
+    max-width: 860px;
     
     .page {
         margin-top: 10px;
@@ -171,34 +181,46 @@ export default {
     }
 
     .articles {
-        padding: 0 5px 20px 5px;
+        padding: 0 0 20px 0;
 
         .article {
             margin-bottom: 40px;
-            // border-bottom: 1px solid #F5F5F5;
+            padding: 20px 0 10px 0;
+            //border: 1px solid #F5F5F5;
             cursor: pointer;
+            //background-color: #FAFAFA;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            transition: box-shadow 0.3s ease-in-out;
+            
+            &:hover {
+                box-shadow: 0 3px 3px rgba(170,170,170,.2);
+            }
             
             &:hover .title {
                 color: #f58500;
             }
 
             .title {
+                padding: 0 10px;
                 //color: font-a-color
                 transition: color 0.15s ease-in-out;
-                display: inline-block;
-                font-size: 2.4rem;
+                //display: inline-block;
+                //font-size: 2.4rem;
+                text-align: center;
             }
             
             .image {
-                padding: 5px 0 5px 0;
+                padding: 10px 0 10px 0;
             }
             
             .description {
                 //color: #9ea0a6;
+                padding: 0 10px;
             }
             
             .info {
                 color: rgba(0,0,0,.4);
+                padding: 0 10px;
             }
         }
     }
