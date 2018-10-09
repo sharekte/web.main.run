@@ -24,16 +24,6 @@
                         <span>{{article.create_at}}</span>
                     </div>
                 </div>
-                <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
-                    <div class="title"><h1>{{article.title}}</h1></div>
-                    <div class="image" v-if="article.image[0]">
-                        <img :src="article.image[0] + '?imageView2/1/w/1200/h/560/q/75'">
-                    </div>
-                    <div class="description">{{article.summary}}</div>
-                    <div class="info">
-                        <span>{{article.create_at}}</span>
-                    </div>
-                </div>
             </div>
             <!-- <div class="articles Grid">
                 <div class="article Cell -mb-c10of10 -tb-c5of10 -c4of12" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">

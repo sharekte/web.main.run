@@ -13,7 +13,7 @@
 
 <style lang="stylus" scoped>
 .section {
-    padding 20px
+    padding 10px
 
     .title {
         text-align center
@@ -21,7 +21,14 @@
 
     .content {
         margin 40px auto
-        max-width 860px
+        max-width 860px;
+        padding: 20px 10px 10px 10px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        transition: box-shadow 0.3s ease-in-out;
+        
+        &:hover {
+            box-shadow: 0 3px 3px rgba(170,170,170,.2);
+        }
     }
 }
 </style>
