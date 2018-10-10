@@ -58,7 +58,13 @@ export default {
                         "</code></pre>"
                     );
                 }
-            });
+            }).use(require("markdown-it-footnote"))
+                .use(require("markdown-it-container"), "name")
+                .use(require("markdown-it-ins"))
+                .use(require("markdown-it-mark"))
+                .use(require("markdown-it-checkbox"))
+                .use(require("markdown-it-attrs"))
+                .use(require("markdown-it-multimd-table"), {enableMultilineRows: true});
 
             return md.render(md_text);
         }
