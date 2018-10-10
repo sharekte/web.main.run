@@ -1,6 +1,6 @@
 <template>
     <input v-if="design == 'default'"
-           class="m-input-defalut"
+           class="m-input"
            ref="input"
            v-bind="$attrs"
            :type="inputType"
