@@ -196,7 +196,7 @@ export default {
                 transition: color 0.15s ease-in-out;
                 //display: inline-block;
                 //font-size: 2.4rem;
-                text-align: center;
+                //text-align: center;
             }
             
             .image {

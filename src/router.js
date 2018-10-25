@@ -3,7 +3,7 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-import Main from "@/components/layouts/Main";
+import Main from "@/components/layouts/Main.vue";
 
 export default new Router({
     mode: "history",
