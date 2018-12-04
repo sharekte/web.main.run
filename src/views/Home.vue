@@ -16,13 +16,16 @@
             <div class="articles">
                 <div class="article" v-for="article in articles" :key="article.id" @click="linkTo(article.id)">
                     <div class="title"><h1>{{article.title}}</h1></div>
+                    <div class="info">
+                        <span>{{article.create_at}}</span>
+                    </div>
                     <div class="image" v-if="article.image[0]">
                         <img :src="article.image[0] + '?imageView2/1/w/1200/h/560/q/75'">
                     </div>
                     <div class="description">{{article.summary}}</div>
-                    <div class="info">
+                    <!-- <div class="info">
                         <span>{{article.create_at}}</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- <div class="articles Grid">
@@ -174,16 +177,16 @@ export default {
         padding: 0 0 20px 0;
 
         .article {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             padding: 20px 0 10px 0;
             //border: 1px solid #F5F5F5;
             cursor: pointer;
             //background-color: #FAFAFA;
-            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+            //box-shadow: 0 1px 1px rgba(0,0,0,.05);
             transition: box-shadow 0.3s ease-in-out;
             
             &:hover {
-                box-shadow: 0 3px 3px rgba(170,170,170,.2);
+                //box-shadow: 0 3px 3px rgba(170,170,170,.2);
             }
             
             &:hover .title {
@@ -206,6 +209,7 @@ export default {
             .description {
                 //color: #9ea0a6;
                 padding: 0 10px;
+                font-size: 1.8rem;
             }
             
             .info {

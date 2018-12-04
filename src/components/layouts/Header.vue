@@ -109,7 +109,7 @@ export default {
 }
 
 .container {
-  padding: 0px 15px 0px 15px;
+   padding: 0px 15px 0px 15px;
 }
 
 breakpoint(min-width, max-width) {
@@ -134,11 +134,11 @@ breakpoint(992px, 960px)
 breakpoint(1200px, 1170px)
 
 a {
-  text-decoration: none;
-  color: rgba(34, 34, 34, 0.8);
+   text-decoration: none;
+   color: rgba(34, 34, 34, 0.8);
 }
 a:hover, a :focus {
-  color: #000000;
+   color: #000000;
 }
 
 .header {
@@ -165,7 +165,7 @@ a:hover, a :focus {
             padding-top: .25rem;
             padding-bottom: .25rem;
             margin-right: 1rem;
-            font-size: 2.2rem;
+            font-size: 3rem;
             line-height: inherit;
             font-weight: 600;
             //color: black;
@@ -233,11 +233,11 @@ a:hover, a :focus {
                 }
 
                 a {
-                    display: inline-block;
+                    //display: inline-block;
                     position: relative;
                     padding-bottom: 0px;
                     transition: color .35s ease;
-                    font-size: 1.8rem;
+                    font-size: 2.4rem;
                     //line-height: 3.2rem;
 
                     &:before {
@@ -286,7 +286,7 @@ a:hover, a :focus {
             height: 42px;
             width: 42px;
             cursor: pointer;
-            padding: 8px 8px;
+            padding: 16px 8px;
 
             @media (min-width: 768px) {
                 display: none;

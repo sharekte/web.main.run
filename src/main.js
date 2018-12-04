@@ -9,7 +9,7 @@ import LocalStore from "store";
 import store from "./store";
 
 Vue.config.productionTip = false;
-
+import "@/assets/css/arita-heiti.css";
 import "@/assets/stylus/style.styl";
 
 import UI from "@/ui";

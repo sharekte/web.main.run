@@ -22,7 +22,7 @@
     .content {
         margin 40px auto
         max-width 860px;
-        padding: 20px 10px 10px 10px;
+        padding: 20px 0 10px 0;
         box-shadow: 0 1px 1px rgba(0,0,0,.05);
         transition: box-shadow 0.3s ease-in-out;
         

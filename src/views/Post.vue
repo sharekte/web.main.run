@@ -73,7 +73,7 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .section {
-    padding: 10px;
+    margin: 10px auto;
     
     // .top-image {
     //     img {
@@ -85,15 +85,15 @@ export default {
         margin: 0px auto;
         padding: 20px 0 10px 0;
         max-width: 860px;
-        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        //box-shadow: 0 1px 1px rgba(0,0,0,.05);
         transition: box-shadow 0.3s ease-in-out;
         
         &:hover {
-            box-shadow: 0 3px 3px rgba(170,170,170,.2);
+            //box-shadow: 0 3px 3px rgba(170,170,170,.2);
         }
 
         .title {
-            text-align: center;
+            //text-align: center;
             padding: 0 10px;
         }
         
@@ -104,6 +104,7 @@ export default {
         .content {
             margin-top: 40px;
             padding: 0 10px;
+            font-size: 1.8rem;
 
             img {
                 max-width: 100%;
